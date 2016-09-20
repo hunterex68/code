@@ -34,7 +34,7 @@ $this->beginPage() ?>
 				</button>
 				<div class="basket-counter"><span id="counter">0</span></div>
 				<div class="auth-links">
-					<a href="#">Вход</a>/<a href="#">Регистрация</a>
+					<a href="login">Вход</a>/<a href="#">Регистрация</a>
 				</div>
 			</div>
 
