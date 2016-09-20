@@ -1,0 +1,27 @@
+@import "variables.less";
+@font-face {
+    font-family: 'Mono Social Icons Font';
+    src: url('../fonts/MonoSocialIconsFont-1.10.eot');
+    src: url('../fonts/MonoSocialIconsFont-1.10.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/MonoSocialIconsFont-1.10.woff') format('woff'),
+         url('../fonts/MonoSocialIconsFont-1.10.ttf') format('truetype'),
+         url('../fonts/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont') format('svg');
+    src: url('../fonts/MonoSocialIconsFont-1.10.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.symbol, .symbol:before {
+    font-family: 'Mono Social Icons Font';
+    font-size: @font-size*2;
+}
+
+.symbol:before {
+    content: attr(title);
+    margin-right: 0.3em;
+
+}
+
+.symbol:hover {
+    color:red;
+}

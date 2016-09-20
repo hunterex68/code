@@ -1,0 +1,141 @@
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.transition {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: initial;
+  transition-delay: initial;
+}
+.top-header {
+  min-height: 50px;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  margin: 0;
+  background: white;
+  z-index: 999;
+  padding: 15px 0;
+  width: 100%;
+}
+.top-header .basket-counter {
+  float: left;
+  border-radius: 50%;
+  background: #2aabd2;
+  padding: 5px 10px;
+  margin-right: 50px;
+  color: white;
+  font-size: .7em;
+}
+.top-header .top_links {
+  font-size: 16px;
+  float: left;
+  display: block;
+}
+.top-header .soc_buttons {
+  margin-top: -8px;
+  line-height: 1;
+  float: right;
+  text-align: right;
+}
+.top-header .client-icon,
+.top-header .basket {
+  float: left;
+  font-size: 17.6px;
+  margin-right: 10px;
+  border: none;
+  background-color: transparent;
+}
+.middle-header {
+  min-height: 100px;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  max-width: 100%;
+  margin: 0 ;
+  width: 100%;
+  background: #334048;
+  /*:url(../img/bg4.jpg) no-repeat top fixed;
+background-position: top center;*/
+  z-index: 999;
+}
+.middle-header .hdr {
+  text-align: center;
+  vertical-align: middle;
+}
+.middle-header nav {
+  line-height: 5;
+}
+.middle-header nav ul {
+  list-style-type: none;
+  margin: 0;
+}
+.middle-header nav li {
+  display: inline-block;
+  list-style: none;
+  padding: 0 6px;
+}
+.middle-header nav li a {
+  text-decoration: none;
+  color: #CCC;
+  font-size: 19.2px;
+  font-family: 'PT Sans Narrow';
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: initial;
+  transition-delay: initial;
+}
+.middle-header nav li a:hover {
+  color: #555;
+}
+.middle-header nav li:active {
+  color: #c0df16;
+}
+.middle-header .main-menu {
+  text-align: center;
+}
+.middle-header .logo {
+  font-weight: bold;
+  font-family: 'Audiowide', Arial, Verdana;
+  overflow: hidden;
+  color: #646464;
+  text-align: center;
+  float: left;
+  line-height: 2;
+  font-size: 48px;
+}
+.middle-header .phones {
+  text-align: right;
+  font-size: em(20px);
+}
+.middle-header .callback {
+  color: #8c8c8c;
+  text-decoration: none;
+  border-bottom: 1px dashed #8c8c8c;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: initial;
+  transition-delay: initial;
+}
+.middle-header .callback:hover {
+  border-color: transparent;
+  text-decoration: none;
+  color: #333;
+}
+.middle-header .rightphone {
+  padding: 5px 10px;
+  overflow: hidden;
+  font-family: 'Cuprum';
+  color: whitesmoke;
+}

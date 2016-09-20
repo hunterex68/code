@@ -1,0 +1,113 @@
+@media (max-width: @device-mini)
+{
+	html {
+		background: none;
+	}
+
+
+	.auth-links {
+		display: none;
+		background-color: inherit;
+		vertical-align: middle;
+	}
+
+	.top-header
+	{
+		position:fixed;
+	    font-size: @font-size;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    background-color:#FFF;
+	}
+
+	.middle-header {
+
+		height: 60px;
+		min-height: 60px;
+
+		.logo {
+			font-size: @font-size*2;
+			border: 0;
+			background-color: transparent;
+			text-align: left;
+			line-height: 1;
+			margin: 15px;
+		}
+		@w: 32px;
+		@h: 3px;
+
+		#sandwich {
+			width: @w;
+			height: @w;
+			float: right;
+			margin: 20px;
+		}
+
+		.sw-topper {
+			position: relative;
+			top: 0;
+			width: @w;
+			height: @h;
+			background: rgb(255, 255, 255);
+			border: none;
+			border-radius: 2px;
+			transition: transform 0.5s, top 0.2s;
+
+			/* transition-delay: 0.2s, 0s; */
+		}
+
+		.sw-bottom {
+			position: relative;
+			width: @w;
+			height: @h;
+			top: @h * 2;
+
+			background: rgb(255, 255, 255);
+			border: none;
+			border-radius: 2px;
+			transition: transform 0.5s, top 0.2s;
+			transition-delay: 0.2s, 0s;
+		}
+		.sw-footer {
+			position: relative;
+			width: @w;
+			height: @h;
+			top: @h * 4;
+			background: rgb(255, 255, 255);
+			border: none;
+			border-radius: 2px;
+			transition: all 0.5s;
+			transition-delay: 0.1s;
+		}
+		#sandwich.active {
+			.sw-topper {
+				top: 15px;
+				transform: rotate(140deg);
+			}
+			.sw-bottom {
+				top: 5px;
+				transform: rotate(-140deg);
+			}
+			.sw-footer {
+				opacity: 0;
+				top: 0;
+				transform: rotate(180deg);
+			}
+		}
+	}
+	.content
+	{
+		width:100%;
+	}
+
+	.toptitle {
+		padding: 50px 0;
+		margin: 200px 0 50px 0;
+	}
+
+	#vin {
+		width: 70%;
+		display: inline;
+	}
+}
