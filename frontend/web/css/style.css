@@ -34,8 +34,8 @@ html {
   background-position: top center;
 }
 footer {
-  clear: both;
-  padding: 50px;
+  margin-top: -260px;
+  padding: 10px;
   background-color: #999;
 }
 section {
@@ -135,7 +135,9 @@ input {
   max-height: 100px;
 }
 .content {
-  float: left;
+  width: 100%;
+  min-height: 100%;
+  height: 100% !important;
 }
 .container2 {
   margin: 150px auto 0;

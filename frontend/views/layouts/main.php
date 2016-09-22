@@ -105,9 +105,9 @@ $this->beginPage() ?>
 		</div>
 	</div>
 </header>
-
+<div class="content">
 <?= $content ?>
-
+</div>
 <footer>
 	<div class="container">
 		<div class="row">
@@ -122,7 +122,7 @@ $this->beginPage() ?>
 
 
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-4">
 				<ul>
 					<li>
 						<a href="/instructions/how_to_begin">Как начать работу</a></li>
@@ -140,7 +140,7 @@ $this->beginPage() ?>
 						<a href="/instructions/how_to_ask_question">Как задать вопрос менеджеру</a></li>
 				</ul>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-4">
 				<ul>
 					<li>
 						<a href="/instructions/discount_sheet">Объемные скидки</a></li>
