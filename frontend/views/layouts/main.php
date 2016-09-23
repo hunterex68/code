@@ -21,6 +21,7 @@ $this->beginPage() ?>
 </head>
 <body>
 <?php $this->beginBody(); ?>
+
 <header class="top-header">
 	<div class="container">
 		<div class="row">
@@ -90,7 +91,7 @@ $this->beginPage() ?>
 								<a href="/site/contact">Контакты</a>
 							</li>
 
-							<li id="enter"><a class="nav-link disabled" href="/site/login">Вход</a></li>
+							<li id="enter"><a class="nav-link disabled" id="iframe" href="/site/login">Вход</a></li>
 
 						</ul>
 					</nav>
@@ -105,10 +106,10 @@ $this->beginPage() ?>
 		</div>
 	</div>
 </header>
-<div class="content">
+
 <?= $content ?>
-</div>
-<footer>
+
+<div id="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4" style=" color: #FFF;  padding: 10px;">
@@ -164,7 +165,8 @@ $this->beginPage() ?>
 				<p class="pull-left">&copy; PartCom <?= date('Y') ?></p>
 			</div>
 		</div>
-</footer>
+	</div>
+</div>
 
 <?php $this->endBody() ?>
 </body>

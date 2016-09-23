@@ -28,7 +28,8 @@ class AppAsset extends AssetBundle
     public $js = [
 
         //'//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',
-        "js/waypoints/lib/jquery.waypoints.min.js",
+        'js/waypoints/lib/jquery.waypoints.min.js',
+        'js/fancybox/jquery.fancybox.js',
         'js/script.js',
     ];
     public $depends = [

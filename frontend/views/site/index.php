@@ -43,7 +43,7 @@ $this->title = 'My Yii Application';
 </div>
 <!--/div-->
 
-<div class="content-wellcom">
+<!--div class="content-wellcom">
     <div class="container">
         <div class="row">
             <div class="col-md-12 title">
@@ -103,7 +103,7 @@ $this->title = 'My Yii Application';
             </div>
         </div>
     </div>
-</div>
+</div-->
 <div class="seo">
     <div class="container">
         <div class="row">
@@ -200,7 +200,7 @@ $this->title = 'My Yii Application';
         </div>
     </div>
 </div>
-<div class="title" id="title">
+<!--div class="title" id="title">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -245,8 +245,8 @@ $this->title = 'My Yii Application';
                     <div class="client-info">
                         <a class="client-name" target="_blank">John Doe</a>
                     </div>
-                </div> <!-- / END CLIENT INFORMATION-->
-            </div> <!-- / END SINGLE FEEDBACK BOX-->
+                </div>
+            </div>
             <div class="feedback-box col-md-3">
                 <div class="message">
                     Адекватные люди. Всегда перезванивают если видят, что у них на телефоне пропущенные вызовы!
@@ -259,8 +259,8 @@ $this->title = 'My Yii Application';
                         <a class="client-name" target="_blank">Олег</a>
                         <a class="client-company">покупатель</a>
                     </div>
-                </div> <!-- / END CLIENT INFORMATION-->
-            </div> <!-- / END SINGLE FEEDBACK BOX-->
+                </div>
+            </div>
             <div class="feedback-box col-md-3">
                 <div class="message">
                     Всегда помогают в подборе деталей, всегда вежливые, если обещали перезвонить, обязательно
@@ -275,8 +275,8 @@ $this->title = 'My Yii Application';
                         <a class="client-name" target="_blank">PitStop</a>
                         <a class="client-company">менеджер</a>
                     </div>
-                </div> <!-- / END CLIENT INFORMATION-->
-            </div> <!-- / END SINGLE FEEDBACK BOX-->
-        </div>
+                </div>
+            </div>
+        </div-->
     </div>
 </div>

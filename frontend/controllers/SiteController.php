@@ -77,7 +77,7 @@ class SiteController extends Controller
         $data = [];
         $data['mainseotext'] = $model->getMainSeoText();
         $data['seotext'] = $model->getSeoText();
-
+        $this->view->registerCssFile('/css/main.css');
         return $this->render('index', ['model' => $data]);
     }
 
@@ -88,6 +88,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->view->registerCssFile('/css/login.css');
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
