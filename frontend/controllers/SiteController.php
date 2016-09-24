@@ -78,6 +78,12 @@ class SiteController extends Controller
         $data['mainseotext'] = $model->getMainSeoText();
         $data['seotext'] = $model->getSeoText();
         $this->view->registerCssFile('/css/main.css');
+
+      /* \Yii::$app->view->on(\Yii::$app->view->EVENT_END_BODY, function () {
+           foreach(Yii::$app->session->getAllFlashes() as $key => $message) {
+               echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
+           }
+       });*/
         return $this->render('index', ['model' => $data]);
     }
 
@@ -90,7 +96,8 @@ class SiteController extends Controller
     {
         $this->view->registerCssFile('/css/login.css');
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+           // return $this->goHome();
+            return Yii::$app->getResponse()->redirect('price/main');
         }
 
         $model = new LoginForm();
@@ -176,14 +183,15 @@ class SiteController extends Controller
      */
     public function actionRequestPasswordReset()
     {
+        $this->view->registerCssFile('/css/login.css');
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->session->setFlash('success', 'Проверьте почиовый ящик и следуйте инструкциям.');
 
                 return $this->goHome();
             } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
+                Yii::$app->session->setFlash('error', 'Извините, мы не смогли отправить Вам письмо с новым паролем.');
             }
         }
 

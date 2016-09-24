@@ -108,7 +108,20 @@ $this->beginPage() ?>
 </header>
 
 <?= $content ?>
+<?php
+/*
+\Yii::app()->clientScript->registerScript(
+	'myHideEffect',
+	'$(".info").animate({opacity: 1.0}, 3000).fadeOut("slow");',
+	CClientScript::POS_READY
+);
+*/
 
+foreach(Yii::$app->session->getAllFlashes() as $key => $message) {
+	echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
+}
+
+?>
 <div id="footer">
 	<div class="container">
 		<div class="row">

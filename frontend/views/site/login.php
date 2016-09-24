@@ -9,9 +9,14 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Вход';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
-<div class="container" style="padding-top:150px;">
+
+<div class="container" style="padding-top:250px;">
 <div class="site-login">
+    <?= yii\widgets\Breadcrumbs::widget([
+        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]) ?>
     <h1><?= Html::encode($this->title) ?></h1>
     <div class="row">
         <div class="col-lg-5">
