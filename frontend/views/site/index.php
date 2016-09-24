@@ -1,109 +1,17 @@
 <?php
 
 /* @var $this yii\web\View */
+use app\components\searchFormWidget;
+$this->title = 'Автозапчасти на Ваш автомобиль';
 
-$this->title = 'My Yii Application';
 ?>
-<div class="title toptitle">
-    <div class="container">
-        <div class="row">
 
-            <h1 class="hidden-xs">Все, что Вам нужно находится здесь!</h1>
-            <h2 class="hidden-xs">любые запчасти на автомобиль.</h2>
-            <div class="col-md-6 panel-body bg-success" style="padding:50px 0;">
-                <form action="find" class="form-inline" role="form">
-                    <input type="text" name="vin" value="" pattern="[A-Za-z0-9]{17}" class="form-control" id="vin"
-                           placeholder="VIN-код">
+<?= searchFormWidget::widget([
+    'header1'=>'Все, что Вам нужно находится здесь!',
+    'header2'=>'любые запчасти на автомобиль.',
+]);?>
 
-                    <button class="btn btn-success" onClick="document.forms[0].submit();">
-                        продолжить&nbsp;
-                            <span>
-                                &#187;
-                            </span>
-                    </button>
-                </form>
-            </div>
-            <div class="col-md-6 panel-body bg-info" style="padding:50px 0;">
 
-                <form action="find" class="form-inline" role="form">
-                    <input type="text" name="oem" value="" pattern="[A-Za-z0-9]" class="form-control" id="vin"
-                           placeholder="Код детали">
-
-                    <button class="btn btn-primary" onClick="document.forms[0].submit();">
-                        Найти!
-                            <span>
-                                &#187;
-                            </span>
-                    </button>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
-<!--/div-->
-
-<!--div class="content-wellcom">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 title">
-
-                <h2>НАШИ ПРЕИМУЩЕСТВА НАД КОНКУРЕНТАМИ</h2>
-
-            </div>
-
-            <div class="col-md-3 pan">
-                <div class="text-center">
-                    <h2>1. Невысокая цена</h2>
-                    80% предложений на рынке - посредники. И посредники посредников. Соответственно наценка
-                    составляет от 100 до 300%. Наша цена устанавливается непосредственно как цена производителя
-                </div>
-            </div>
-            <div class="col-md-3 pan">
-                <div class="text-center">
-                    <h2>2. Нет скрытых платежей</h2>
-
-                    По телефону озвучивается привлекательная стоимость, а на деле же получается совсем другое -
-                    надбавка идет за любые дополнительные расходы. Деньги теряете Вы. У нас нет скрытых платежей!
-                </div>
-            </div>
-            <div class="col-md-3 pan">
-                <div class="text-center">
-                    <h2>3. Ценим клиента</h2>
-
-                    Мы принимаем любую форму оплаты, которая удобна для клиента, а для постоянных заказчиков
-                    действуют приятные скидки. Если у вас нет возможности вывезти товар самостоятельно, мы подыщем
-                    транспорт по минимальной цене, проложив при этом оптимальный маршрут до пункта назначения
-                </div>
-            </div>
-            <div class="col-md-3 pan">
-                <div class="text-center">
-                    <h2>4. Профессионализм</h2>
-
-                    Долгий период усиленной работы в сфере торговли автозапчастями, а также тысячи тонн отгруженного
-                    товара позволяют нам гарантировать качество продукции и своевременную доставку каждой партии
-                </div>
-            </div>
-            <div class="col-md-3 pan">
-                <div class="text-center">
-                    <h2>5. Большой опыт</h2>
-
-                    В нашей стране этим видом топлива стали пользоваться лишь в середине 2000-х, в то время как
-                    европейцы и американцы активно используют пеллеты в качестве эффективного сырья для отопления
-                    уже в течение тридцати лет
-                </div>
-            </div>
-            <div class="col-md-3 pan">
-                <div class="text-center">
-                    <h2>6. Только качество</h2>
-
-                    Мы гарантируем качество каждой отгруженной партии товара и несем полную ответственность за
-                    продукт. Доставка крупных партий товара осуществляется в срок от 1 до 5 дней
-                </div>
-            </div>
-        </div>
-    </div>
-</div-->
 <div class="seo">
     <div class="container">
         <div class="row">

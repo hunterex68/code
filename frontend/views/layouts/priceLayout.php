@@ -1,4 +1,4 @@
-﻿<?
+<?
 use app\assets\AppAsset;
 use yii\helpers\Html;
 
@@ -34,9 +34,7 @@ $this->beginPage() ?>
 					<i class="glyphicon glyphicon-shopping-cart"></i>
 				</button>
 				<div class="basket-counter"><span id="counter">0</span></div>
-				<div class="auth-links">
-					<a href="login">Вход</a>/<a href="#">Регистрация</a>
-				</div>
+
 			</div>
 
 			<div class="col-md-3 soc_buttons">
@@ -85,13 +83,13 @@ $this->beginPage() ?>
 								<a class="nav-link" href="javascript:;">Каталоги</a>
 							</li>
 							<li>
-								<a class="nav-link" href="/site/about">О нас</a>
+								<a class="nav-link" href="/price/balance">Баланс</a>
 							</li>
 							<li>
 								<a href="/site/contact">Контакты</a>
 							</li>
 
-							<li id="enter"><a class="nav-link disabled" id="iframe" href="/site/login">Вход</a></li>
+							<li id="enter"><a class="nav-link disabled" id="iframe" href="/site/logout">Выход</a></li>
 
 						</ul>
 					</nav>

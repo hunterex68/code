@@ -73,6 +73,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (!Yii::$app->user->isGuest) {
+            // return $this->goHome();
+            return Yii::$app->getResponse()->redirect('../price');
+        }
         $model = new seoTexts();
         $data = [];
         $data['mainseotext'] = $model->getMainSeoText();
@@ -94,10 +98,10 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        $this->view->registerCssFile('/css/login.css');
+        $this->view->registerCssFile('/css/ShortPage.css');
         if (!Yii::$app->user->isGuest) {
            // return $this->goHome();
-            return Yii::$app->getResponse()->redirect('price/main');
+            return Yii::$app->getResponse()->redirect('../price');
         }
 
         $model = new LoginForm();
@@ -117,6 +121,7 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
+        die("!!");
         Yii::$app->user->logout();
 
         return $this->goHome();
@@ -183,7 +188,7 @@ class SiteController extends Controller
      */
     public function actionRequestPasswordReset()
     {
-        $this->view->registerCssFile('/css/login.css');
+        $this->view->registerCssFile('/css/shortPage.css');
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
