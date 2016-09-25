@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="container" style="padding-top:250px;">
+<div class="container">
 <div class="site-login">
     <?= yii\widgets\Breadcrumbs::widget([
         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

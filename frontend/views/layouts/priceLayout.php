@@ -89,7 +89,14 @@ $this->beginPage() ?>
 								<a href="/site/contact">Контакты</a>
 							</li>
 
-							<li id="enter"><a class="nav-link disabled" id="iframe" href="/site/logout">Выход</a></li>
+							<li id="enter"><!--a class="nav-link disabled" id="iframe" href="/site/logout">Выход</a-->
+
+								<?= Html::a("Выход", ['/site/logout'], [
+									'data' => ['method' => 'post'],
+									'class' => 'white text-center',
+								]);?>
+
+							</li>
 
 						</ul>
 					</nav>
