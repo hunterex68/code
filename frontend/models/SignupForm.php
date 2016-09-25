@@ -12,6 +12,12 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $position;
+    public $firstname;
+    public $lastname;
+    public $phone;
+    public $name;
+    public $address;
 
 
     /**
