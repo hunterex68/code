@@ -20,9 +20,11 @@ return [
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
             'on afterlogin'=>function($event){
-
-                $user = $event->sender->identity;
-                $user->updateAttributes(['logged_at'=>time()]);
+                \app\models\User::updateLastLogin($event);
+                \app\models\User::setCookies($event);
+                //$user = $event->sender->identity;
+                //$user->updateAttributes(['logged_at'=>time()]);
+                //SsetCoockies($user);
             }
         ],
         'session' => [
