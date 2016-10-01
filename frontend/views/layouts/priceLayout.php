@@ -19,7 +19,7 @@ $this->beginPage() ?>
 	<?php $this->head() ?>
 
 </head>
-<body>
+<body style="background: none;">
 <?php $this->beginBody(); ?>
 
 <header class="top-header">
