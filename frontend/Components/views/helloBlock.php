@@ -8,7 +8,7 @@
 				<h2 class="hidden-xs">любые запчасти на автомобиль.</h2>
 			<? endif ?>
 			<div class="col-md-6 panel-body bg-success" style="padding:50px 0;">
-				<form action="find" class="form-inline" role="form">
+				<form action="price/find" method = 'get' class="form-inline" role="form">
 					<input type="text" name="vin" value="" pattern="[A-Za-z0-9]{17}" class="form-control" id="vin"
 					       placeholder="VIN-код">
 
@@ -22,11 +22,10 @@
 			</div>
 			<div class="col-md-6 panel-body bg-info" style="padding:50px 0;">
 
-				<form action="find" class="form-inline" role="form">
-					<input type="text" name="oem" value="" pattern="[A-Za-z0-9]" class="form-control" id="vin"
-					       placeholder="Код детали">
+				<form action="find" method = 'get' class="form-inline" role="form">
+					<input type="text" name="oem" value="" class="form-control" id="vin" placeholder="Код детали">
 
-					<button class="btn btn-primary" onClick="document.forms[0].submit();">
+					<button type='submit' class="btn btn-primary">
 						Найти!
 	                            <span>
 	                                &#187;
