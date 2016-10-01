@@ -34,6 +34,7 @@ use yii\grid\GridView;
 		['attribute' => 'Price',
 			'format' => 'text',
 			'label' => 'Цена',],
+
 		//['class' => 'yii\grid\ActionColumn'],
 		[
 			'class' => 'yii\grid\ActionColumn',
