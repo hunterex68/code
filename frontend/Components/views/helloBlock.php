@@ -20,12 +20,23 @@
 					</button>
 				</form>
 			</div>
+			<script type="text/javascript">
+				function submitForm() {
+					$.when(
+						$.ajax('price/find?oem=MN100250&csrf-token=VHZ2UVdrVGURJx0CIy0QAhxDPjA0ORoVJiwsJjMxE1wjESQEMzo1LA=='),
+						$.ajax('price/find?oem=MN100250&csrf-token=VHZ2UVdrVGURJx0CIy0QAhxDPjA0ORoVJiwsJjMxE1wjESQEMzo1LA==')
+					).then(function (result1, result2) {
+						console.log(result1);
+						console.debug(result2);
+					});
+				}
+			</script>
 			<div class="col-md-6 panel-body bg-info" style="padding:50px 0;">
 
-				<form action="find" method = 'get' class="form-inline" role="form">
-					<input type="text" name="oem" value="" class="form-control" id="vin" placeholder="Код детали">
+				<form action = 'price/find' class="form-inline" role="form">
+					<input type="text" name="oem" value="" class="form-control" id="oem" placeholder="Код детали">
 
-					<button type='submit' class="btn btn-primary">
+					<button type="submit" class="btn btn-primary">
 						Найти!
 	                            <span>
 	                                &#187;
