@@ -1,3 +1,4 @@
+
 <div class="title toptitle">
 	<div class="container">
 		<div class="row">
@@ -7,7 +8,7 @@
 			<? if(!empty($model['header2'])):?>
 				<h2 class="hidden-xs">любые запчасти на автомобиль.</h2>
 			<? endif ?>
-			<div class="col-md-6 panel-body bg-success" style="padding:50px 0;">
+			<div class="col-md-6 panel-body bg-success" >
 				<form action="price/find" method = 'get' class="form-inline" role="form">
 					<input type="text" name="vin" value="" pattern="[A-Za-z0-9]{17}" class="form-control" id="vin"
 					       placeholder="VIN-код">
@@ -21,7 +22,7 @@
 				</form>
 			</div>
 			<script type="text/javascript">
-				function submitForm() {
+				/*function submitForm() {
 					$.when(
 						$.ajax('price/find?oem=MN100250&csrf-token=VHZ2UVdrVGURJx0CIy0QAhxDPjA0ORoVJiwsJjMxE1wjESQEMzo1LA=='),
 						$.ajax('price/find?oem=MN100250&csrf-token=VHZ2UVdrVGURJx0CIy0QAhxDPjA0ORoVJiwsJjMxE1wjESQEMzo1LA==')
@@ -29,9 +30,9 @@
 						console.log(result1);
 						console.debug(result2);
 					});
-				}
+				}*/
 			</script>
-			<div class="col-md-6 panel-body bg-info" style="padding:50px 0;">
+			<div class="col-md-6 panel-body bg-info">
 
 				<form action = 'price/find' class="form-inline" role="form">
 					<input type="text" name="oem" value="" class="form-control" id="oem" placeholder="Код детали">
