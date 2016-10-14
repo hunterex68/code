@@ -34,7 +34,7 @@
 			</script>
 			<div class="col-md-6 panel-body bg-info">
 
-				<form action = 'price/find' class="form-inline" role="form">
+				<form action = '<?echo $model['controller'];?>find' class="form-inline" role="form">
 					<input type="text" name="oem" value="" class="form-control" id="oem" placeholder="Код детали">
 
 					<button type="submit" class="btn btn-primary">

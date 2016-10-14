@@ -9,7 +9,7 @@ class searchFormWidget extends Widget
 	public $header1;
 	public $header2;
 	public $data;
-	public $place;
+	public $controller;
 
 	public function init()
 	{
@@ -21,7 +21,7 @@ class searchFormWidget extends Widget
 
 		$this->data['header1'] = !empty($this->header1)?$this->header1:'';
 		$this->data['header2'] = !empty($this->header2)?$this->header2:'';
-		$this->data['place'] = !empty($this->place)?$this->place:'';
+		$this->data['controller'] = !empty($this->controller)?$this->controller:'';
 
 		return $this->render('helloBlock',['model'=>$this->data]);
 	}

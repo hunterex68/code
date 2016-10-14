@@ -3,7 +3,20 @@
 use app\components\searchFormWidget;
 use yii\bootstrap\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
+function renderHeader()
+{
+	echo "<tr>";
+		echo "<th>";
 
+		echo "</th>";
+	echo "</tr>";
+}
+
+function renderTable($provider)
+{
+	renderheader();
+}
 ?>
 <style>
 
@@ -19,17 +32,18 @@ use yii\grid\GridView;
 		margin-top: 80px;
 	}
 </style>
-
+<?php Pjax::begin()?>
 <?= searchFormWidget::widget(); ?>
 
 <div class="container content">
 	<?php if (!empty($brands)) : ?>
-		<div class="row">
-			<div class="col-md-12" style="background-color: white">
+
+		<div class='row'>
+			<div class='col-md-12' style='background-color: white'>
 				<h1>Выберите производителя</h1>
 				<h3>Уточните, пожалуйста.<br> Номер детали присутствует в каталогах нескольких производителей</h3>
 				<hr>
-				<table class="table">
+				<table class='table'>
 					<?php foreach($brands as $str):?>
 						<tr>
 							<td>
@@ -42,15 +56,15 @@ use yii\grid\GridView;
 						</tr>
 					<?php endforeach ?>
 				</table>
-
-
 	<?php endif; ?>
 	<?php if (!empty($model)) : ?>
-
+<h1>Прайс по ОАЭ</h1>
 				<?= GridView::widget([
 					'dataProvider' => $model,
 					'columns' => [
-						'Make',
+						['attribute' => 'MakeName',
+							'format' => 'text',
+							'label' => 'Производитель',],
 						['attribute' => 'DetailNum',
 							'format' => 'text',
 							'label' => 'Код',],
@@ -72,17 +86,21 @@ use yii\grid\GridView;
 						['attribute' => 'Price',
 							'format' => 'text',
 							'label' => 'Цена',],
-
-						//['class' => 'yii\grid\ActionColumn'],
 						[
 							'class' => 'yii\grid\ActionColumn',
 							'template' => '{link}',
+							'urlCreator'=>function($action, $model, $key, $index)
+							{
+								$hash  = base64_encode("code:".$model->DetailNum."#");
+                                return \yii\helpers\Url::to(['basket/add?data='.$hash]);
+                            },
 							'buttons' => [
 
 								'link' => function ($url, $model, $key) {
-									return Html::a('<span class="glyphicon glyphicon-cross"></span>', $url);
+									return Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>', $url);
 								},
-							],],
+							],
+						],
 					],
 					'showFooter' => false,
 					'layout' => '{pager}{summary}{items}',
@@ -101,50 +119,10 @@ use yii\grid\GridView;
 		</div>
 	<?php endif ?>
 	<?php if (!empty($stock)) : ?>
-
-				<?= GridView::widget([
-					'dataProvider' => $stock,
-					'columns' => [
-						'brand',
-						['attribute' => 'code',
-							'format' => 'text',
-							'label' => 'Код',],
-						['attribute' => 'description',
-							'format' => 'text',
-							'label' => 'Описание',],
-
-						['attribute' => 'quan',
-							'format' => 'text',
-							'label' => 'К-во',],
-						['attribute' => 'Price',
-							'format' => 'text',
-							'label' => 'Цена',],
-
-						//['class' => 'yii\grid\ActionColumn'],
-						[
-							'class' => 'yii\grid\ActionColumn',
-							'template' => '{link}',
-							'buttons' => [
-
-								'link' => function ($url, $model, $key) {
-									return Html::a('<span class="glyphicon glyphicon-cross"></span>', $url);
-								},
-							],],
-					],
-					'showFooter' => false,
-					'layout' => '{pager}{summary}{items}',
-					'filterPosition' => FILTER_POS_FOOTER,
-					'rowOptions' => function ($model, $key, $index, $grid) {
-						$class = $index % 2 ? 'odd' : 'even';
-						return [
-							'key' => $key,
-							'index' => $index,
-							'class' => $class
-						];
-					},
-				]);
-				?>
+<h1>Прайс по Украине</h1>
+				<?php echo renderTable($stock);?>
 			</div>
 		</div>
-	<?php endif ?>
+	<?php endif; ?>
 </div>
+<?php Pjax::end();?>
