@@ -50,6 +50,9 @@ class lanaServices
 		$this->client = new SoapClient($this->host, ['exceptions' => 1,
 			'cache_wsdl' => WSDL_CACHE_MEMORY,'timeout'=>10]);
 		$result = $this->client->SearchPart( $this->params );
+
+
+
 		return $result->SearchPartResult->FindByNumber;
 
 	}

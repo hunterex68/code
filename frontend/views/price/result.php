@@ -1,22 +1,12 @@
 <?php
-/* @var $this yii\web\View */
+/* @var $this yii\
+ * eb\View */
 use app\components\searchFormWidget;
+use app\components\Writer;
 use yii\bootstrap\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-function renderHeader()
-{
-	echo "<tr>";
-		echo "<th>";
 
-		echo "</th>";
-	echo "</tr>";
-}
-
-function renderTable($provider)
-{
-	renderheader();
-}
 ?>
 <style>
 
@@ -34,33 +24,40 @@ function renderTable($provider)
 </style>
 <?php Pjax::begin()?>
 <?= searchFormWidget::widget(); ?>
-
+<? $render = new Writer(); ?>
 <div class="container content">
 	<?php if (!empty($brands)) : ?>
 
 		<div class='row'>
 			<div class='col-md-12' style='background-color: white'>
-				<h1>Выберите производителя</h1>
-				<h3>Уточните, пожалуйста.<br> Номер детали присутствует в каталогах нескольких производителей</h3>
-				<hr>
-				<table class='table'>
-					<?php foreach($brands as $str):?>
-						<tr>
-							<td>
-								<?
+				<div class="panel well">
+					<h1>Выберите производителя</h1>
+					<h3>Уточните, пожалуйста.<br> Номер детали присутствует в каталогах нескольких производителей</h3>
+					<hr>
+					<table class='table table-stripd' style="width:50%">
+						<?php foreach($brands as $str):?>
+							<tr>
+								<td>
+									<?
 
-									echo Html::a($str, 'find?oem='.$code.'&brand='.$str);
+										echo Html::a($str, 'find?oem='.$code.'&brand='.$str);
 
-								?>
-							</td>
-						</tr>
-					<?php endforeach ?>
-				</table>
+									?>
+								</td>
+							</tr>
+						<?php endforeach ?>
+					</table>
+				</div>
+			</div>
+		</div>
 	<?php endif; ?>
 	<?php if (!empty($model)) : ?>
-<h1>Прайс по ОАЭ</h1>
-				<?= GridView::widget([
+	<div class='row'>
+			<div class='col-md-12' style='background-color: white'>
+				<?/*= GridView::widget([
 					'dataProvider' => $model,
+					'caption'=>"<h1>Прайс по ОАЭ</h1>",
+					'headerRowOptions'=>["class"=>"bg-info"],
 					'columns' => [
 						['attribute' => 'MakeName',
 							'format' => 'text',
@@ -113,14 +110,25 @@ function renderTable($provider)
 							'class' => $class
 						];
 					},
-				]);
+				]);*/?>
+				<?php
+					/*print_r($model);
+				die();*/
+					$input = "<input type='number' min='1' pattern='[0-9]{,9}' class='form-control' style='width:80px' name='q' id='q' value='1'>";
+					$button = Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>', "basketAdd");
+					$render->caption = "<h1>Прайс по ОАЭ</h1>";
+					$render->columns = ['MakeName'=>'Бренд',"DetailNum"=>"Код детали","PartNameRus"=>"Наименование","PriceLogo"=>"Регион","WeightGr"=>"Вес, гр.","GuaranteedDay"=>"Доставка гар., дн.", "Price"=>"Цена","Available"=>"Доступно","!$input"=>"","!$button"=>""];
+					$render->renderTable($model);
 				?>
 			</div>
 		</div>
 	<?php endif ?>
 	<?php if (!empty($stock)) : ?>
-<h1>Прайс по Украине</h1>
-				<?php echo renderTable($stock);?>
+		<div class='row'>
+			<div class='col-md-12' style='background-color: white'>
+				<h1>Прайс по Украине</h1>
+					<? $render->columns=['brand'=>'Бренд',"code"=>"Код детали","description"=>"Наименование"];?>
+					<?php $render->renderTable($stock);?>
 			</div>
 		</div>
 	<?php endif; ?>
