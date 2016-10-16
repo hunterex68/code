@@ -115,9 +115,22 @@ use yii\widgets\Pjax;
 					/*print_r($model);
 				die();*/
 					$input = "<input type='number' min='1' pattern='[0-9]{,9}' class='form-control' style='width:80px' name='q' id='q' value='1'>";
-					$button = Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>', "basketAdd");
+					$button = Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>', "basketAdd",["class"=>"btn btn-default"]);
 					$render->caption = "<h1>Прайс по ОАЭ</h1>";
-					$render->columns = ['MakeName'=>'Бренд',"DetailNum"=>"Код детали","PartNameRus"=>"Наименование","PriceLogo"=>"Регион","WeightGr"=>"Вес, гр.","GuaranteedDay"=>"Доставка гар., дн.", "Price"=>"Цена","Available"=>"Доступно","!$input"=>"","!$button"=>""];
+					$render->columns =
+						[
+							["key"=>'MakeName',"val"=>'Бренд'],
+							["val"=>"Код детали","key"=>"DetailNum"],
+							["val"=>"Наименование","key"=>"PartNameRus"],
+							["key"=>"PriceLogo","val"=>"Регион","option"=>Html::a('%s', 'javascript:;',['onclick'=>'notice()',"class"=>'region'])],
+							["val"=>"Вес, гр.","key"=>"WeightGr"],
+							["key"=>"GuaranteedDay","val"=>"Доставка гар., дн."],
+							["val"=>"Цена","key"=>"Price"],
+							["val"=>"Доступно","key"=>"Available"],
+							["val"=>"","option"=>$input,"key"=>"control"],
+							["val"=>"","option"=>$button,"key"=>"control"],
+							["key"=>"hash","option"=>"","val"=>""],
+						];
 					$render->renderTable($model);
 				?>
 			</div>
@@ -127,7 +140,9 @@ use yii\widgets\Pjax;
 		<div class='row'>
 			<div class='col-md-12' style='background-color: white'>
 				<h1>Прайс по Украине</h1>
-					<? $render->columns=['brand'=>'Бренд',"code"=>"Код детали","description"=>"Наименование"];?>
+					<? $render->columns=['brand'=>'Бренд',
+						"code"=>"Код детали",
+						"description"=>"Наименование"];?>
 					<?php $render->renderTable($stock);?>
 			</div>
 		</div>

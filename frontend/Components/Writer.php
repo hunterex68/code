@@ -26,11 +26,13 @@ class Writer
 	{
 		$h='';
 		if(!empty($this->columns)) {
-			$h = "<tr>";
-			foreach ($this->columns as $key=>$val) {
+			$h = "<tr class='bg-primary'>";
+			//print_r($this->columns);
+			//die();
+			foreach ($this->columns as $val) {
 
 				$h .= "<th>";
-				$h .= $val;
+				$h .= $val['val'];
 				$h .= "</th>";
 			}
 			$h .= "</tr>";
@@ -43,17 +45,23 @@ class Writer
 		if(is_array($data))
 		{
 			//Html::tag('table', implode("\n", $content), ["class"=>"table"]);
-			$h = $this->caption."<table class='table'><thead>".$this->header()."</thead><tbody>";
+			$h = $this->caption."<table class='table table-hover' id='oae'><thead>".$this->header()."</thead><tbody>";
 			$outline='';
 			if(!empty($data)) {
 				foreach ($data as $res) {
+					$hash ='';
+					foreach($res as $key=>$val)
+						if($val!='control' && $val!='hash')
+							$hash .= $key.":".$val."#";
 					$outline .= "<tr>";
-					foreach ($this->columns as $key=>$val) {
-						if($key[0]!='!')
-							$outline .= "<td>" . $res->$key . "</td>";
+					foreach ($this->columns as $val) {
+
+						if(empty($val['option']))
+							$outline .= "<td>" . $res->$val['key'] . "</td>";
 						else
-							$outline .= "<td>" . substr($key,1,strlen($key)-1) . "</td>";
+							$outline .= "<td>" . sprintf($val['option'],$res->$val['key']) . "<input type='hidden' name='hash' value='" . strrev(base64_encode(strrev($hash))) . "'/></td>";
 					}
+
 					$outline .= "</tr>";
 				}
 			}
