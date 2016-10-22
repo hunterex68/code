@@ -140,10 +140,27 @@ use yii\widgets\Pjax;
 		<div class='row'>
 			<div class='col-md-12' style='background-color: white'>
 				<h1>Прайс по Украине</h1>
-					<? $render->columns=['brand'=>'Бренд',
-						"code"=>"Код детали",
-						"description"=>"Наименование"];?>
-					<?php $render->renderTable($stock);?>
+				<?
+				//print_r($stock);
+				//die();
+				$input = "<input type='number' min='1' pattern='[0-9]{,9}' class='form-control' style='width:80px' name='q' id='q' value='1'>";
+				$button = Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>', "basketAdd",["class"=>"btn btn-default"]);
+				$render->caption = "<h1>Прайс по ОАЭ</h1>";
+					 $render->columns =
+						[
+							["key"=>'brand',"val"=>'Бренд'],
+							["val"=>"Код детали","key"=>"code"],
+							["val"=>"Наименование","key"=>"descrption"],
+							["key"=>"srg","val"=>"Регион","option"=>Html::a('%s', 'javascript:;',['onclick'=>'notice()',"class"=>'region'])],
+							["key"=>"delivey","val"=>"Доставка гар., дн."],
+							["val"=>"Цена","key"=>"price"],
+							["val"=>"Доступно","key"=>"quan"],
+							["val"=>"","option"=>$input,"key"=>"control"],
+							["val"=>"","option"=>$button,"key"=>"control"],
+							["key"=>"hash","option"=>"","val"=>""],
+						];
+
+					$render->renderTable($stock);?>
 			</div>
 		</div>
 	<?php endif; ?>
