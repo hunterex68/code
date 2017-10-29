@@ -2,7 +2,7 @@
 namespace app\components;
 
 use yii\base\Widget;
-use yii\helpers\Html;
+
 
 class searchFormWidget extends Widget
 {
@@ -22,7 +22,7 @@ class searchFormWidget extends Widget
 		$this->data['header1'] = !empty($this->header1)?$this->header1:'';
 		$this->data['header2'] = !empty($this->header2)?$this->header2:'';
 		$this->data['controller'] = !empty($this->controller)?$this->controller:'';
-
 		return $this->render('helloBlock',['model'=>$this->data]);
+
 	}
 }

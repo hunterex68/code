@@ -1,51 +1,66 @@
+<?php
+use yii\helpers\Url;
+use yii\helpers\Html;
+use kartik\typeahead\Typeahead;
 
-<div class="title toptitle">
-	<div class="container">
-		<div class="row">
+use yii\web\JsExpression;
+
+?>
+<div style="height:150px"></div>
+
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 text-center">
 			<? if(!empty($model['header1'])):?>
 				<h1 class="hidden-xs">Все, что Вам нужно находится здесь!</h1>
 			<? endif ?>
 			<? if(!empty($model['header2'])):?>
 				<h2 class="hidden-xs">любые запчасти на автомобиль.</h2>
 			<? endif ?>
-			<div class="col-md-6 panel-body bg-success" >
-				<form action="price/find" method = 'get' class="form-inline" role="form">
-					<input type="text" name="vin" value="" pattern="[A-Za-z0-9]{17}" class="form-control" id="vin"
-					       placeholder="VIN-код">
-
-					<button class="btn btn-success" onClick="document.forms[0].submit();">
-						продолжить&nbsp;
-	                            <span>
-	                                &#187;
-	                            </span>
-					</button>
-				</form>
-			</div>
-			<script type="text/javascript">
-				/*function submitForm() {
-					$.when(
-						$.ajax('price/find?oem=MN100250&csrf-token=VHZ2UVdrVGURJx0CIy0QAhxDPjA0ORoVJiwsJjMxE1wjESQEMzo1LA=='),
-						$.ajax('price/find?oem=MN100250&csrf-token=VHZ2UVdrVGURJx0CIy0QAhxDPjA0ORoVJiwsJjMxE1wjESQEMzo1LA==')
-					).then(function (result1, result2) {
-						console.log(result1);
-						console.debug(result2);
-					});
-				}*/
-			</script>
-			<div class="col-md-6 panel-body bg-info">
-
-				<form action = '<?echo $model['controller'];?>find' class="form-inline" role="form">
-					<input type="text" name="oem" value="" class="form-control" id="oem" placeholder="Код детали">
-
-					<button type="submit" class="btn btn-primary">
-						Найти!
-	                            <span>
-	                                &#187;
-	                            </span>
-					</button>
-				</form>
-
-			</div>
 		</div>
 	</div>
-</div>
+	<div class="row" data-spy="affix"  data-offset="10" style="background-color:#FFF;z-index:99999;width:100%;margin-top:-123px;padding:20px 0;">
+		<div class="col-md-6 col-md-offset-3 text-center" >
+			<form action="<?php echo Url::toRoute("price/find");?>" method = 'get' class="form-inline" role="form">
+
+				<div class="input-group">
+				<?php echo Html::hiddenInput('brand','',['id'=>'brand']);?>
+				<?php
+
+				$template = '<div class="repo"><kbd>{{brand}}</kbd>   {{code}}</div>';
+				echo Typeahead::widget([
+					'id' => 'oem',
+					'name' => 'oem',
+					'options' => ['placeholder' => 'OEM/VIN код', 'class' => 'oem'],
+					'dataset' => [
+						[
+							'datumTokenizer' => "Bloodhound.tokenizers.obj.whitespace('value')",
+							'display' => 'value',
+							'templates' => [
+								//'notFound' => '<div class="text-danger" style="padding:0 8px">.</div>',
+								'suggestion' => new JsExpression("Handlebars.compile('{$template}')")
+							],
+							'remote' => [
+								'url' => Url::to(['price/get-code-from-base']) . '?code=%oem%',
+								'wildcard' => '%oem%'
+							]
+						]
+					],
+					'pluginEvents' => [
+						'minlength' => '3',
+						'typeahead:selected' => 'function(obj, item) {
+
+							$("#oem").val(item.code);
+							$("#brand").val(item.brand);
+
+							}'
+					]
+				]);
+				?><div class="input-group-btn">
+						<button class="btn btn-success" type="submit">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>

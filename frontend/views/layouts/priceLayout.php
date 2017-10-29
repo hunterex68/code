@@ -1,9 +1,9 @@
 <?
 use app\assets\AppAsset;
 use yii\helpers\Html;
-
+use yii\helpers\Url;
+use app\components\searchFormWidget;
 AppAsset::register($this);
-//\yii\web\JqueryAsset::register($this);
 
 $this->beginPage() ?>
 
@@ -23,7 +23,7 @@ $this->beginPage() ?>
 <?php $this->beginBody(); ?>
 
 <header class="top-header">
-	<div class="container">
+
 		<div class="row">
 
 			<div class="col-md-4 top_links">
@@ -48,13 +48,16 @@ $this->beginPage() ?>
 				   target="_blank" class="social-icon"><span class="symbol">pinterest</span></i></a>
 			</div>
 		</div>
-	</div>
+
 </header>
 <header class="middle-header">
-	<div class="container">
+	
 		<div class="row">
-			<div class="hdr clearfix">
-				<div class='col-md-2 logo'>LANA</div>
+			<div class="hdr">
+            <div class="container">
+				<div class='col-md-2 logo'>
+                    PartCom
+                </div>
 
 				<div class="col-md-3 col-md-push-7 rightphone hidden-xs">
 					<div class="phones">
@@ -77,21 +80,24 @@ $this->beginPage() ?>
 					<nav style="text-align: center" class="clearfix">
 						<ul class="main-menu">
 							<li class="active">
-								<a class="nav-link" href="javascript:;">Главная</a>
+								<?= Html::a(Yii::t('app',"Главная"),Url::toRoute('/'),["class"=>"nav-link"]); ?>
 							</li>
 							<li>
-								<a class="nav-link" href="javascript:;">Каталоги</a>
+								<?= Html::a(Yii::t('app',"Каталоги"),Url::toRoute('catalogs'),["class"=>"nav-link"]); ?>
 							</li>
 							<li>
-								<a class="nav-link" href="/price/balance">Баланс</a>
+								<?= Html::a(Yii::t('app',"Наличие"),Url::toRoute('stock'),["class"=>"nav-link"]); ?>
 							</li>
 							<li>
-								<a href="/site/contact">Контакты</a>
+								<?= Html::a(Yii::t('app',"Баланс"),Url::toRoute('balance'),["class"=>"nav-link"]); ?>
+							</li>
+							<li>
+								<?= Html::a(Yii::t('app',"Контакты"),Url::toRoute('contacts'),["class"=>"nav-link"]); ?>
 							</li>
 
-							<li id="enter"><!--a class="nav-link disabled" id="iframe" href="/site/logout">Выход</a-->
+							<li id="enter">
 
-								<?= Html::a("Выход", ['/site/logout'], [
+								<?= Html::a("Выход", Url::toRoute('site/logout'), [
 									'data' => ['method' => 'post'],
 									'class' => 'white text-center',
 								]);?>
@@ -111,27 +117,26 @@ $this->beginPage() ?>
 		</div>
 	</div>
 </header>
+<div class="container-fluid">
+	<?php echo  searchFormWidget::widget([
+		'header1'=>'Все, что Вам нужно находится здесь!',
+		'header2'=>'любые запчасти на автомобиль.',
+		'controller'=>'price/',
+	]);?>
+	<?= $content ?>
+	<?php
+	foreach(Yii::$app->session->getAllFlashes() as $key => $message) {
+		echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
+	}
+	?>
+		<div class="row" style="background-color:#999">
+			<div class="col-md-4" style=" color: #FFF;">
 
-<?= $content ?>
-<?php
-
-
-foreach(Yii::$app->session->getAllFlashes() as $key => $message) {
-	echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
-}
-
-?>
-<div id="footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4" style=" color: #FFF;  padding: 10px;">
-
-
-				<strong>Расписание работы</strong><br>
-				Понедельник - пятница:<br>с 9:00 до 17:00 (GMT +2)<br>
-				Воскресенье: выходной день<br>
-				Тел: +3801231231212<br>
-				<strong>Обработка заказов -&nbsp;</strong>круглосуточно<br>
+				<strong>Расписание работы</strong><br/>
+				Понедельник - пятница:<br/>с 9:00 до 17:00 (GMT +2)<br/>
+				Воскресенье: выходной день<br/>
+				Тел: +3801231231212<br/>
+				<strong>Обработка заказов -&nbsp;</strong>круглосуточно<br/>
 
 
 			</div>
@@ -172,14 +177,12 @@ foreach(Yii::$app->session->getAllFlashes() as $key => $message) {
 				</ul>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="background-color:#999">
 			<div class="col-md-12">
-				<p class="pull-left">&copy; PartCom <?= date('Y') ?></p>
+					<p class="pull-left">&copy; PartCom <?= date('Y') ?></p>
 			</div>
 		</div>
 	</div>
-</div>
-
 <?php $this->endBody() ?>
 </body>
 </html>

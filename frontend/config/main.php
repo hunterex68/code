@@ -49,6 +49,10 @@ return [
             'rules' => [
             ],
         ],
+        'mailer' =>[
+            'class' => 'yii\swiftmailer\Mailer',
+
+        ],
 
     ],
     'params' => $params,

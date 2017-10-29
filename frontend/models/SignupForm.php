@@ -41,7 +41,14 @@ class SignupForm extends Model
             ['password', 'string', 'min' => 6],
         ];
     }
-
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Имя',
+            'email' => 'Почта',
+            'password' => 'Пароль'
+        ];
+    }
     /**
      * Signs user up.
      *
@@ -58,8 +65,7 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        $usermetadata = new usermetadata();
-        
+
         return $user->save() ? $user : null;
     }
 }

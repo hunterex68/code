@@ -17,13 +17,21 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "yiisoft/yii2-swiftmailer": "*",
+        "phpoffice/phpexcel":"dev-develop",
+        "newerton/yii2-fancybox": "dev-master",
+		"nirvana-msu/yii2-showloading": "1.0.*@dev",
+        "kartik-v/yii2-widget-typeahead": "*",
+        "kartik-v/yii2-checkbox-x": "*"
+		
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
+        "yiisoft/yii2-faker": "*",
+        "kartik-v/yii2-widget-typeahead": "*"
+		
     },
     "config": {
         "process-timeout": 1800

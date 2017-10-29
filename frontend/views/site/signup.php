@@ -8,15 +8,19 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Регистрация';
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = 'Регистрация::Шаг 1';
 ?>
-<div class="site-signup" style="padding:250px;">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Регистрация:</p>
+<div class="container" id="body">
 
-    <div class="row">
-        <div class="col-lg-5">
+        <div class="row site-login">
+            <?= yii\widgets\Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+        </div>
+        <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-sm-offset-1">
+            <h1><?= Html::encode($this->title) ?></h1>
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
@@ -26,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                    <?= Html::submitButton('Далее', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

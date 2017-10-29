@@ -1,53 +1,15 @@
 /**
  * Created by HOME on 14.09.2016.
  */
-$(document).ready(
-    function() {
 
-        $("#sandwich, .menu_item").on("click", function () {
-            $("#sandwich").toggleClass("active");
-        });
+//$('#uplPrice').on('submit', $.fancybox.showLoading());
 
-        /*$("#title").waypoint(function (direction) {
-            
-            if (direction == "down") {
+$(document).ready( function() {
 
-                $('#title').addClass('fadeInDown animated');
-            }
-            else if (direction === "up") {
-                $('#title').removeClass('fadeInDown animated');
-            }
+    $('.r1').on('affix.bs.affix',function(){
 
-        }, {offset: 200});
+        $(this).css('display','none');
 
-        $("#toptitle").waypoint(function (direction) {
-
-            if (direction == "down") {
-
-                $('#toptitle').addClass('animated fadeInDown');
-            }
-            else if (direction === "up") {
-                $('#toptitle').removeClass('animated fadeInDown');
-            }
-         }, {offset: "100%"});*/
+    });
     });
 
-/*
- function testAnim(x) {
- $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
- $(this).removeClass();
- });
- };
-
- $(document).ready(function(){
- $('.js--triggerAnimation').click(function(e){
- e.preventDefault();
- var anim = $('.js--animations').val();
- testAnim(anim);
- });
-
- $('.js--animations').change(function(){
- var anim = $(this).val();
- testAnim(anim);
- });
- });*/
