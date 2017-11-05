@@ -80,7 +80,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        //$this->view->registerCssFile('/css/shortPage.css');
+        $this->view->registerCssFile('/css/longPage.css');
         if (!Yii::$app->user->isGuest) {
             // return $this->goHome();
             return Yii::$app->getResponse()->redirect('../price');
@@ -356,5 +356,11 @@ class SiteController extends Controller
         return $this->redirect(Url::to(['/site/login']));
     }
 
-
+    public function actionSuppliers()
+    {
+        $list = ['success'=>true];
+        $list['listUrls']['url'] = 'q';
+        $list['listUrls']['data'] = '1';
+        return json_encode($list);
+    }
 }

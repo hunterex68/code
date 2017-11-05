@@ -2,6 +2,7 @@
 
 use app\components\searchFormWidget;
 use app\components\MegaWidget;
+use app\components\StockWidget;
 use app\assets\PriceAsset;
 
 PriceAsset::register($this);
@@ -17,7 +18,7 @@ PriceAsset::register($this);
 		</div>
 	</div>
 
-	<?php if (!empty($stock)) : ?>
+
 		<div class='row'>
 			<div class='col-md-10 col-md-offset-1' style='background-color: white'>
 				<?php echo StockWidget::widget([
@@ -26,4 +27,4 @@ PriceAsset::register($this);
 				]);?>
 			</div>
 		</div>
-	<?php endif; ?>
+

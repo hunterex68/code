@@ -44,6 +44,7 @@
 		 */
 		public function actionFind($oem, $brand = '')
 		{
+			//print_r(Yii::$app->params['brands']);die('OEM = '.$oem." BRAND = ".$brand);
 			if (empty($brand)) {
 				//если бренд не определен делам запрос на сервис
 				// для получения списка производителей
@@ -53,6 +54,7 @@
 				foreach (Yii::$app->params['brands'] as $srv) {
 
 					$arr = Yii::$app->$srv->getBrands($oem);
+
 					for ($i = 0; $i < count($arr); $i++)
 						$br[] = $arr[$i];
 				}
@@ -62,8 +64,6 @@
 					$this->view->registerCssFile('/css/shortPage.css');
 					return $this->render('listbrands', ['dataProvider' => $br, 'code' => $oem]);
 				}
-
-
 			}
 			else
 				$this->view->registerCssFile('/css/longPage.css');
@@ -82,6 +82,7 @@
 			if (!empty($code)) {
 				$list = Stock::getCode($code);
 			}
+
 			$data = [];
 			foreach ($list as $item) {
 				//$statePresent = 'present';
