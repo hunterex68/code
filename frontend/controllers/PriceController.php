@@ -91,4 +91,10 @@
 			//Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 			return json_encode($data);
 		}
+
+		public function actionStock()
+		{
+			return $this->action;
+		}
+
 	}

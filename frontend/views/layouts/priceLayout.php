@@ -86,7 +86,7 @@ $this->beginPage() ?>
 								<?= Html::a(Yii::t('app',"Каталоги"),Url::toRoute('catalogs'),["class"=>"nav-link"]); ?>
 							</li>
 							<li>
-								<?= Html::a(Yii::t('app',"Наличие"),Url::toRoute('stock'),["class"=>"nav-link"]); ?>
+								<?= Html::a(Yii::t('app',"Наличие"),Url::toRoute('./stock'),["class"=>"nav-link"]); ?>
 							</li>
 							<li>
 								<?= Html::a(Yii::t('app',"Баланс"),Url::toRoute('balance'),["class"=>"nav-link"]); ?>

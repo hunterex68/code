@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use yii;
+use yii\helpers\Url;
 use app\models\UploadForm;
 use app\models\Fileformat;
 use yii\web\UploadedFile;
@@ -54,7 +55,7 @@ class StockController extends \yii\web\Controller
                 die;
             }
         }
-        $this->view->registerCssFile('/css/shortPage.css');
+        $this->view->registerCssFile('/css/longPage.css');
         $model = new UploadForm();
 
 
@@ -80,37 +81,39 @@ class StockController extends \yii\web\Controller
     {
         $mod = new UploadForm();
         $table='';
-        $this->view->registerCssFile('/css/shortPage.css');
+        $this->view->registerCssFile('/css/longPage.css');
         if (Yii::$app->request->isPost)
         {
             $mod->file = UploadedFile::getInstance($mod, 'file');
+
             //грузим файл
             if ($mod->upload())
             {
                 //если чекбокс не установлен показывам для определения формата
                 //если чекбокс установле - заливаем в базу
-                $request = Yii::$app->request;
-                $mode = $request->post('UploadForm')['save_format'];
+                $post = Yii::$app->request->post();
+                $mode = $post['UploadForm']['save_format'];
+
                 $format = [];
                 if($mode == 1)
                 {
                     $format = (new Fileformat())->findOne(['UserId'=>\Yii::$app->user->identity->getId()]);
                 }
-                
+
                 $table = $mod->getData();
                 $data = $mod->showData($table);
                 //$provider = new ArrayDataProvider(['allModels' => $data, 'pagination' => ['pageSize' => 20, ], ]);
             }
         }
 
-        return $this->render('preView', ['model' => $mod,'dataProvider' => $data,'format'=>$format,'table'=>$table]);
+        return $this->render('preView', ['model' => $mod,'dataProvider' => $data,'format'=>$format,'table'=>$table,'delete_content'=>$post['delete_content']]);
 
     }
 
     public function actionAdd()
     {
         if (Yii::$app->request->isPost) {
-            $this->view->registerCssFile('/css/shortPage.css');
+            $this->view->registerCssFile('/css/longPage.css');
             $request = Yii::$app->request->post();
 
             $fields = array();
@@ -119,13 +122,20 @@ class StockController extends \yii\web\Controller
             $fields[$request['f3']] = 'f3';
             $fields[$request['f4']] = 'f4';
             $fields[$request['f5']] = 'f5';
+            $fields[$request['f6']] = 'f6';
 
-            if (count($fields) == 5) {
+            if (count($fields) == 6) {
                 $mod = new UploadForm();
-                if($mod->addStock($fields,$request['table']))
+                if($request['delete_content'])
+                {
+                    UploadForm::delStock();
+                }
+                if($mod->addStock($fields,$request['table'])) {
+                    UploadForm::truncateTable();
                     $content = "<h1>Склад успешно залит!</h1>";
+                }
             }
-            return $this->render('@app/views/price/index', ['content' => $content]);
+            return $this->redirect(Url::toRoute('price/index'));
         }
 
     }

@@ -91,7 +91,7 @@ class Stock extends \yii\db\ActiveRecord
 	{
 		$hash = "'" . str_replace('#', "','", $hash) . "'";
 
-		$q = 'SELECT brand, code,description,quan,price,term,client_id FROM stock WHERE upper(concat(brand,":",singlecode)) in (' . $hash . ')';
+		$q = 'SELECT brand, code,description,quan,price,term,client_id FROM stock WHERE upper(concat(brand,":",replace(singlecode,"*",""))) in (' . $hash . ')';
 		$res = Yii::$app->db->createCommand($q)
 		->queryAll();
 		return $res;

@@ -14,10 +14,11 @@ namespace app\components;
 
 class Utilites
 {
-    function printSel($cnt, $format)
+    public static function printSel($cnt, $format)
     { //print_r($format);die;
         echo "<thead>
-                  <tr>";
+                  <tr><pre>";
+       // print_r($format);die;
         for($i=1;$i<=$cnt;$i++)
         {
             echo "<th> <select id='f$i' name='f$i' class='form-control'>";
