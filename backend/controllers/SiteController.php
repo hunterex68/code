@@ -2,10 +2,14 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\base\Exception;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+use backend\models\SignupForm;
+use backend\models\LoginForm;
+use backend\models\Log;
+use backend\models\User;
 
 /**
  * Site controller
@@ -22,11 +26,11 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'index','signup'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -78,6 +82,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
+            log::toFile($model->getErrors(),true,'site.log');
             return $this->render('login', [
                 'model' => $model,
             ]);
@@ -94,5 +99,50 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionSignup()
+    {
+
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new User();
+        $post = Yii::$app->request->post();
+
+        if (count($post)>0) {
+            try {
+                $post['User']['status'] = 10;
+                $post['User']['created_at'] = date('Y-m-d H:m:s');
+                if ($model->load($post)) {
+                    $model->setPassword($post['User']['password']);
+                    $model->generateAuthKey();
+
+                    if (!$model->save()) {
+                        $error_code = rand(0,1000)*1000;
+                        log::toFile("====================".$error_code."================", true, 'site.log');
+                        log::toFile(date('Y-m-d H:m:s').'\tЛогин: '.$post['User']['username'], true, 'site.log');
+                        log::toFile(date('Y-m-d H:m:s').'\tЛогин: '.$post['User']['password'], true, 'site.log');
+                        log::toFile(date('Y-m-d H:m:s').'\tЛогин: '.$post['User']['email'], true, 'site.log');
+
+                        $errors = $model->getErrors();
+                        foreach ($errors as $error) {
+
+                            log::toFile($error, true, 'site.log');
+
+                        }
+                        Yii::$app->session->setFlash('error','Ошибка регистрации. Обратитесь к администратору и сообщите код ошибки');
+
+                    }
+                }
+                return $this->goHome();
+            }
+            catch(Exception $ex){
+                log::toFile($ex->getMessage(), true, 'site.log');
+            }
+        }
+        return $this->render('signup', compact('model'));
+
     }
 }

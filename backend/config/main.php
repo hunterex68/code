@@ -12,6 +12,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    'language' => 'ru-RU',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -37,14 +38,31 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+
             ],
         ],
-        */
+        'i18n' => [
+            'translations'=>[
+                // app* - это шаблон, который определяет, какие категории
+                // обрабатываются источником. В нашем случае, мы обрабатываем все, что начинается с app
+                'app'=>[
+                    'class'=>yii\i18n\PhpMessageSource::className(),
+                    //
+                    'basePath'=>'@app/messages',
+                    // исходный язык
+                    'sourceLanguage'=>'ru-RU',
+                    // определяет, какой файл будет подключаться для определённой категории
+                    'fileMap'=>[
+                        'app'=>'app.php',
+                        'app/error'=>'error.php',
+                    ]
+                ],
+            ]
     ],
+        ],
     'params' => $params,
 ];

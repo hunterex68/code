@@ -5,9 +5,10 @@
  * Date: 02.05.2015
  * Time: 18:16
  */
-namespace frontend\models;
+namespace backend\models;
 
 use yii\base\Model;
+use backend\models\User;
 use Yii;
 
 class LoginForm extends Model

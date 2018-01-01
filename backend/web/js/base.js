@@ -14,3 +14,9 @@ $(function () {
 	
 	
 });
+
+$(document).on('click','.shortcut',function(){
+
+
+
+											});

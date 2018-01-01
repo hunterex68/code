@@ -3,7 +3,24 @@
 /* @var $this yii\web\View */
 
 $this->title = 'Автозапчасти на Ваш автомобиль';
+if(Yii::$app->session->hasFlash('Error'))
+{
+    ?>
 
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+
+                <div class="text-center bg-danger">
+                    <h2 style="margin:50px 0;padding:20px 0;color:red">
+                        <?php echo Yii::$app->session->getFlash('Error') ?>
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+
+    <?php
+}
     ?>
     <div class="row">
         <div class="col-md-12 seo">

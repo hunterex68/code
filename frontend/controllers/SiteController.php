@@ -178,9 +178,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 return $this->redirect('../usersmetadata/create?id='.$user->id);
-                //if (Yii::$app->getUser()->login($user)) {
-                  //  return $this->goHome();
-                //}
+
             }
         }
 
