@@ -198,6 +198,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function getUsersmetadatas()
     {
-        return $this->hasOne(Usersmetadata::className(), ['id' => $this->id]);
+        return $this->hasOne(Usersmetadata::className(), ['userid' => 'id']);
+    }
+
+    public function getOrders()
+    {
+        return $this->hasMany(Orders::className(), ['userid' => 'id']);
     }
 }

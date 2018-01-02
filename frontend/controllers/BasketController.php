@@ -2,13 +2,15 @@
 
 namespace frontend\controllers;
 
+use yii;
+
 class BasketController extends \yii\web\Controller
 {
+
     public function actionIndex()
     {
         return $this->render('index');
     }
-
     public function actionBasketWindow()
     {
         $post = \Yii::$app->request->post();
@@ -23,5 +25,12 @@ class BasketController extends \yii\web\Controller
         }
         else
             return $this->renderPartial('error');
+    }
+    public function actionAdd()
+    {
+        $post = Yii::$app->request->post();
+        $extra = base64_decode($post['extradata']);
+        $extradata = json_decode($extra);
+        echo '<pre>';print_r($extradata);die('</pre>');
     }
 }

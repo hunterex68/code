@@ -10,10 +10,11 @@ if(count($data['ua']['orig'])>0)
 {
     \yii\bootstrap\Modal::begin([
         'id'=>'bskt',
-        'header'=>'<h1>Форма заказа</h1>',
-        'footer'=>'ffffffffff',
+        'options'=>['style'=>'z-index:99999'],
+        'header'=>'<h1>Форма заказа</h1><input type="hidden" id="data">',
+        'footer'=>Html::button('Добавить',['class'=>'btn btn-success js-add2basket','data-url'=>Url::toRoute('basket/add')]).Html::button('Отменить',['class'=>'btn btn-warning js-cancelBasket']),
     ]);?>
-    <input type="hidden" id="data">
+
 
     <?php \yii\bootstrap\Modal::end();
     $id = rand(1, 1000);
@@ -107,7 +108,7 @@ if(count($data['ua']['analog'])>0)
             <?
             $i=1;
             foreach ($data['ua']['analog'] as $val) {
-//print_r($val);die;
+
                 if (!empty($val['price']) && $val['price'] != 0) {
                     $pr = round($val['price'], 2);
                     $pr .= '&nbsp;'.$val['currency'];
@@ -135,12 +136,7 @@ if(count($data['ua']['analog'])>0)
             </tbody>
         </table>
     </div>
-    <script type="text/javascript">
 
-        /*dt('#t<? echo $id;?>',1,5);*/
-        //sort('#analogList','.brands');
-
-    </script>
     <?
 }
 ?>

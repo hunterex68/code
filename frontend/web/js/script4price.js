@@ -88,3 +88,19 @@ function sort(group,element){
     });
     $elements.detach().appendTo($target);
 }
+
+$(document).on('click','.js-add2basket',function(){
+
+    var url = $(this).data('url');
+    var data = $('#addform').serialize();
+    $.ajax({
+
+        url:url,
+        data:data,
+        method:'post',
+        success:function(){
+            alert('success!');
+        }
+    })
+
+});

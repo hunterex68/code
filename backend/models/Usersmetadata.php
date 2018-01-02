@@ -56,11 +56,11 @@ class Usersmetadata extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'UserID' => 'User ID',
-            'RegionID' => 'Region ID',
+            'RegionID' => 'Регион',
             'Address' => 'Адрес',
-            'GroupID' => 'Group ID',
+            'GroupID' => 'Группа',
             'CarrierID' => 'Carrier ID',
-            'Recipient' => 'Recipient',
+            'Recipient' => 'Получатель',
         ];
     }
 

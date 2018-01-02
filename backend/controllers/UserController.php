@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use backend\models\User;
+use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -64,10 +65,17 @@ class UserController extends \yii\web\Controller
     {
         $user = User::findOne($id);
         $data = $user->getUsersmetadatas();
+        $orders = $user->getOrders();
+        //echo '<pre>';print_r($data);die('</pre>');
+        $provider = new ActiveDataProvider([
+
+        'query' => $data,
+
+        ]);
         if(!$data)
         {
             $data = [];
         }
-        return $this->render('edit',['user'=>$user,'data'=>$data]);
+        return $this->render('edit',['user'=>$user,'data'=>$provider,'orders'=>$orders]);
     }
 }
