@@ -18,8 +18,6 @@ if(count($data['uae']['orig'])>0)
 
     <?php \yii\bootstrap\Modal::end();
 
-
-
         $id = rand(1, 1000);
     ?>
     <pre>Оригинал</pre>

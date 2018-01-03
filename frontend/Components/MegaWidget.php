@@ -132,11 +132,13 @@ class MegaWidget extends Widget
                         $this->data['uae']['orig'][$i]['code'] = $row->DetailNum;
                         $this->data['uae']['orig'][$i]['name'] = $row->PartNameRus;
                         $this->data['uae']['orig'][$i]['price'] = round($row->Price * (1 + $koeff->kUAE / 100) + ($row->WeightGr / 1000) * 11 * 26/*$cource*/, 2);
-
-                        $this->data['uae']['orig'][$i]['currency'] = 'грн.';
+                        $this->data['uae']['orig'][$i]['suplierPrice'] = $row->Price;
+                        $this->data['uae']['orig'][$i]['currency'] = 'UAH';
                         $this->data['uae']['orig'][$i]['delivery'] = $row->GuaranteedDay + 16;
+                        $this->data['uae']['orig'][$i]['weight'] = $row->WeightGr;
                         $this->data['uae']['orig'][$i]['pack'] = $row->Packing;
-                        $this->data['uae']['orig'][$j]['vol'] = $row->VolumeAdd;
+                        $this->data['uae']['orig'][$i]['vol'] = $row->VolumeAdd;
+                        $this->data['uae']['orig'][$i]['region'] = $row->PriceLogo;
                         $this->data['uae']['orig'][$i++]['percent'] = $row->PercentSupped;
 
 
@@ -145,11 +147,13 @@ class MegaWidget extends Widget
                         $this->data['uae']['orig'][$i]['code'] = $row->DetailNum;
                         $this->data['uae']['orig'][$i]['name'] = $row->PartNameRus;
                         $this->data['uae']['orig'][$i]['price'] = round($row->Price * (1 + $koeff->kUAE / 100) + ($row->WeightGr / 1000) * 6 * /*$cource*/26    , 2);
-
-                        $this->data['uae']['orig'][$i]['currency'] = 'грн.';
+                        $this->data['uae']['orig'][$i]['suplierPrice'] = $row->Price;
+                        $this->data['uae']['orig'][$i]['currency'] = 'UAH';
                         $this->data['uae']['orig'][$i]['delivery'] = $row->GuaranteedDay + 30;
+                        $this->data['uae']['orig'][$i]['weight'] = $row->WeightGr;
                         $this->data['uae']['orig'][$i]['pack'] = $row->Packing;
-                        $this->data['uae']['orig'][$j]['vol'] = $row->VolumeAdd;
+                        $this->data['uae']['orig'][$i]['vol'] = $row->VolumeAdd;
+                        $this->data['uae']['orig'][$i]['region'] = $row->PriceLogo;
                         $this->data['uae']['orig'][$i++]['percent'] = $row->PercentSupped;
                     } else {
                         //echo "Неоригинал ".strtolower($row->MakeName)."==". strtolower($this->brand)." && ". strtolower($row->DetailNum)." == ". strtolower($this->number)."<br/>";
@@ -158,11 +162,13 @@ class MegaWidget extends Widget
                         $this->data['uae']['analog'][$j]['code'] = $row->DetailNum;
                         $this->data['uae']['analog'][$j]['name'] = $row->PartNameRus;
                         $this->data['uae']['analog'][$j]['price'] = round($row->Price * (1 + $koeff->kUAE / 100) + ($row->WeightGr / 1000) * 11 * $cource, 2);
-
-                        $this->data['uae']['analog'][$j]['currency'] = 'грн.';
+                        $this->data['uae']['analog'][$j]['suplierPrice'] = $row->Price;
+                        $this->data['uae']['analog'][$j]['currency'] = 'UAH';
                         $this->data['uae']['analog'][$j]['delivery'] = $row->GuaranteedDay + 16;
+                        $this->data['uae']['analog'][$j]['weight'] = $row->WeightGr;
                         $this->data['uae']['analog'][$j]['pack'] = $row->Packing;
                         $this->data['uae']['analog'][$j]['vol'] = $row->VolumeAdd;
+                        $this->data['uae']['analog'][$j]['region'] = $row->PriceLogo;
                         $this->data['uae']['analog'][$j++]['percent'] = $row->PercentSupped;
 
                         $this->data['uae']['analog'][$i]['dummy'] = 1;
@@ -170,11 +176,13 @@ class MegaWidget extends Widget
                         $this->data['uae']['analog'][$i]['code'] = $row->DetailNum;
                         $this->data['uae']['analog'][$i]['name'] = $row->PartNameRus;
                         $this->data['uae']['analog'][$i]['price'] = round($row->Price * (1 + $koeff->kUAE / 100) + ($row->WeightGr / 1000) * 6 * $cource, 2);
-
-                        $this->data['uae']['analog'][$i]['currency'] = 'грн.';
+                        $this->data['uae']['analog'][$i]['suplierPrice'] = $row->Price;
+                        $this->data['uae']['analog'][$i]['currency'] = 'UAH';
                         $this->data['uae']['analog'][$i]['delivery'] = $row->GuaranteedDay + 30;
+                        $this->data['uae']['analog'][$i]['weight'] = $row->WeightGr;
                         $this->data['uae']['analog'][$i]['pack'] = $row->Packing;
-                        $this->data['uae']['analog'][$j]['vol'] = $row->VolumeAdd;
+                        $this->data['uae']['analog'][$i]['vol'] = $row->VolumeAdd;
+                        $this->data['uae']['analog'][$i]['region'] = $row->PriceLogo;
                         $this->data['uae']['analog'][$i++]['percent'] = $row->PercentSupped;
                     }
 
