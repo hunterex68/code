@@ -104,3 +104,29 @@ $(document).on('click','.js-add2basket',function(){
     })
 
 });
+
+$(document).on('change','#offer',function() {
+
+    var flag = true;
+    var form = $('#addform');
+    var name = $(form).find('#name');
+    var tel  = $(form).find('#tel');
+    if(name && tel)
+      if(($(name).val()).length==0 || ($(tel).val()).length==0)
+        flag = false;
+    if($(this).is(':checked') && flag) {
+        $('.js-add2basket').removeAttr('disabled');
+    }
+    else
+        {
+            $('.js-add2basket').attr('disabled',true);
+        }
+
+});
+
+$(document).on('blur','#tel',function(){
+
+    if(!/^[0-9\(\)]{12,14}/.test($(this).val()))
+        $(this).val('');
+
+});

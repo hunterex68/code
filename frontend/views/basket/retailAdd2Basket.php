@@ -11,6 +11,28 @@ $data = json_decode(base64_decode($model));
 
 
 <div class="container-fluid">
+    <form id='addform'>
+<?php
+
+if(Yii::$app->user->id == 0)
+{
+    ?>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <input type="text" name="name" id="name" class="form-control" placeholder="<?php echo Yii::t('app','Имя')?>">
+            </div>
+            <div class="col-md-6">
+
+                <input type="text" name="tel" id="tel" class="form-control" placeholder="<?php echo Yii::t('app','Телефон')?>">
+            </div>
+        </div>
+
+    <?php
+}
+?>
+    <hr>
     <div class="row">
         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
 
@@ -22,7 +44,7 @@ $data = json_decode(base64_decode($model));
         </div>
     </div>
     <hr>
-    <form id='addform'>
+
 
     <?php echo Html::hiddenInput('extradata',$model); ?>
 

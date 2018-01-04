@@ -6,19 +6,20 @@ use yii\helpers\Url;
 ?>
 <h1>Прайс по ОАЭ</h1>
 <?php
+
+\yii\bootstrap\Modal::begin([
+    'id'=>'bskt',
+    'options'=>['style'=>'z-index:99999'],
+    'header'=>'<h1>Форма заказа</h1><input type="hidden" id="data">',
+    'footer'=>$this->render('ajax\footerModal'),
+]);?>
+
+
+<?php \yii\bootstrap\Modal::end();
+
 if(count($data['uae']['orig'])>0)
 {
-    \yii\bootstrap\Modal::begin([
-        'id'=>'bskt',
-        'options'=>['style'=>'z-index:99999'],
-        'header'=>'<h1>Форма заказа</h1><input type="hidden" id="data">',
-        'footer'=>Html::button('Добавить',['class'=>'btn btn-success js-add2basket','data-url'=>Url::toRoute('basket/add')]).Html::button('Отменить',['class'=>'btn btn-warning js-cancelBasket']),
-    ]);?>
-
-
-    <?php \yii\bootstrap\Modal::end();
-
-        $id = rand(1, 1000);
+    $id = rand(1, 1000);
     ?>
     <pre>Оригинал</pre>
     <div class="tablo">
@@ -32,14 +33,14 @@ if(count($data['uae']['orig'])>0)
             <col width="50px" valign="middle">
             <thead>
                 <tr>
-                <th>Производитель</th>
-                <th>Код</th>
-                <th class="hidden-xs hidden-sm">Наименование</th>
-                <th>Доставка макс., дн.</th>
-                <th>Цена</th>
-                <th>Вероятность закупки</th>
-                <th></th>
-            </tr>
+                    <th>Производитель</th>
+                    <th>Код</th>
+                    <th class="hidden-xs hidden-sm">Наименование</th>
+                    <th>Доставка макс., дн.</th>
+                    <th>Цена</th>
+                    <th>Вероятность закупки</th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
                 <?
@@ -79,13 +80,14 @@ if(count($data['uae']['orig'])>0)
             </tbody>
         </table>
     </div>
-<?}
+<?
+}
 if(count($data['uae']['analog'])>0)
 {
     $id = rand(1, 1000);
     ?>
     <pre>Аналоги</pre>
-<div class="tablo">
+    <div class="tablo">
     <table class="table table-hover table-striped" id="t<? echo $id ?>">
         <col width="150px" valign="middle">
         <col width="100px" valign="middle">
@@ -95,15 +97,15 @@ if(count($data['uae']['analog'])>0)
         <col width="50px" valign="middle">
         <col width="50px" valign="middle">
         <thead>
-        <tr>
-            <th>Производитель</th>
-            <th>Код</th>
-            <th class="hidden-xs hidden-sm">Наименование</th>
-            <th>Доставка макс., дн.</th>
-            <th>Цена</th>
-            <th>Вероятность закупки</th>
-            <th></th>
-        </tr>
+            <tr>
+                <th>Производитель</th>
+                <th>Код</th>
+                <th class="hidden-xs hidden-sm">Наименование</th>
+                <th>Доставка макс., дн.</th>
+                <th>Цена</th>
+                <th>Вероятность закупки</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody id="analogList">
         <?
