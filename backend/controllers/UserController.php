@@ -2,11 +2,14 @@
 
 namespace backend\controllers;
 
-use backend\models\User;
+use common\models\User;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\Usersmetadata;
+use common\models\Orders;
+use common\models\Log;
 
 class UserController extends \yii\web\Controller
 {
@@ -64,18 +67,24 @@ class UserController extends \yii\web\Controller
     public function actionEdit($id)
     {
         $user = User::findOne($id);
-        $data = $user->getUsersmetadatas();
-        $orders = $user->getOrders();
-        //echo '<pre>';print_r($data);die('</pre>');
+        $data = Usersmetadata::find()
+            ->alias('data')
+            ->select('')
+            ->where(['userid'=>$id]);
+        $orders = Orders::find()->where(['userid'=>$id]);
+
         $provider = new ActiveDataProvider([
 
-        'query' => $data,
+            'query' => $data,
 
         ]);
-        if(!$data)
-        {
-            $data = [];
-        }
-        return $this->render('edit',['user'=>$user,'data'=>$provider,'orders'=>$orders]);
+
+        $orderProvider = new ActiveDataProvider([
+
+            'query' => $orders,
+
+        ]);
+
+        return $this->render('edit',['user'=>$user,'data'=>$provider,'orders'=>$orderProvider]);
     }
 }

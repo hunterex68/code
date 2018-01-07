@@ -7,11 +7,11 @@ use yii\bootstrap\Tabs;
 
         <?php
 
-        Tabs::widget([
+         echo Tabs::widget([
             'items' => [
                 [
                     'label'     =>  'Инфо',
-                    'content'   =>  $this->render('tabs/info', ['model' => $data]),
+                    'content'   =>  $this->render('tabs/info', ['data' => $data]),
                     'active'    =>  true
                 ],
                 [

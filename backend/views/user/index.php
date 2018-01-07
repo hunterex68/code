@@ -18,6 +18,8 @@ use yii\grid\GridView;
                 <?= GridView::widget([
 
                     'dataProvider' =>$provider,
+                    'showOnEmpty' => false,
+                    'emptyText' => '<table><tbody></tbody></table>',
                     'columns' => [
 
                         // Обычные поля определенные данными содержащимися в $dataProvider.

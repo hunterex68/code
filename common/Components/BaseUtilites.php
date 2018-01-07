@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components;
+namespace common\components;
 
 use app\models\Country;
 use DateTime;

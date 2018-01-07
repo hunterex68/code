@@ -110,8 +110,7 @@ if(!Yii::$app->user->isGuest) {
                 if(!Yii::$app->user->isGuest) {
                     ?>
                     <div class="row">
-                        <div class="col-md-12">
-
+                        <div class="col-md-6">
                             <div class="widget widget-nopad">
                                 <div class="widget-header">
                                     <i class="icon-list-alt"></i>
@@ -129,7 +128,7 @@ if(!Yii::$app->user->isGuest) {
                                                 <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value">423</span> </div>
                                                 <!-- .stat -->
 
-                                                <div class="stat"> <i class="icon-twitter-sign"></i> <span class="value">922</span> </div>
+                                                <div class="stat"> <i class="icon-anchor"></i> <span class="value">922</span> </div>
                                                 <!-- .stat -->
 
                                                 <div class="stat"> <i class="icon-bullhorn"></i> <span class="value">25%</span> </div>
@@ -137,44 +136,36 @@ if(!Yii::$app->user->isGuest) {
                                             </div>
                                         </div>
                                         <!-- /widget-content -->
-
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="widget widget-nopad">
+                                <div class="widget-header">
+                                    <i class="icon-list-alt"></i>
+                                    <h3>Статистика за день</h3>
+                                </div>
+                                <div class="widget-content">
+                                    <div class="shortcuts">
+                                        <a href="javascript:;" class="shortcut">
+                                            <i class="shortcut-icon icon-list-alt"></i>
+                                            <span class="shortcut-label">Заказы</span>
+                                        </a>
+                                        <a href="javascript:;" class="shortcut">
+                                            <i class="shortcut-icon icon-bookmark"></i>
+                                            <span class="shortcut-label">Состояние</span>
+                                        </a>
+                                        <a href="javascript:;" class="shortcut">
+                                            <i class="shortcut-icon icon-comment"></i>
+                                            <span class="shortcut-label">Отзывы</span>
+                                        </a>
+                                        <a href="<?php echo Url::toRoute('user/') ?>" class="shortcut">
+                                            <i class="shortcut-icon icon-user"></i>
+                                            <span class="shortcut-label">Клиенты</span>
+                                        </a>
 
-                            <div class="widget-content">
-                                <div class="shortcuts">
-                                    <a href="javascript:;" class="shortcut">
-                                        <i class="shortcut-icon icon-list-alt"></i>
-                                        <span class="shortcut-label">Заказы</span>
-                                    </a>
-                                    <a href="javascript:;" class="shortcut">
-                                        <i class="shortcut-icon icon-bookmark"></i>
-                                        <span class="shortcut-label">Состояние</span>
-                                    </a>
-                                    <a href="javascript:;" class="shortcut">
-                                        <i class="shortcut-icon icon-signal"></i>
-                                        <span class="shortcut-label">Отчеты</span>
-                                    </a>
-                                    <a href="javascript:;" class="shortcut">
-                                        <i class="shortcut-icon icon-comment"></i>
-                                        <span class="shortcut-label">Отзывы</span>
-                                    </a>
-                                    <a href="<?php echo Url::toRoute('user/') ?>" class="shortcut">
-                                        <i class="shortcut-icon icon-user"></i>
-                                        <span class="shortcut-label">Клиенты</span>
-                                    </a>
-                                    <a href="javascript:;" class="shortcut">
-                                        <i class="shortcut-icon icon-file"></i>
-                                        <span class="shortcut-label">Notes</span>
-                                    </a>
-                                    <a href="javascript:;" class="shortcut">
-                                        <i class="shortcut-icon icon-picture"></i>
-                                        <span class="shortcut-label">Photos</span> </a>
-                                    <a href="javascript:;" class="shortcut">
-                                        <i class="shortcut-icon icon-tag"></i>
-                                        <span class="shortcut-label">Tags</span>
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -310,8 +301,6 @@ if(!Yii::$app->user->isGuest) {
                   </div>
 
                 </div-->
-
-
 
                 <?php echo $content ?>
 

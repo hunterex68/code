@@ -6,10 +6,10 @@
  * Time: 12:41
  */
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
-use app\components\BaseUtilites;
+use common\components\BaseUtilites;
 
 
 class Log
@@ -50,7 +50,7 @@ class Log
         if(empty($filename)){
             $filename = \app\components\BaseUtilites::settings('TEMP_LOG_FILENAME');
         }
-        if (!\app\components\BaseUtilites::settings('TEMP_LOG_ENABLE') && $filename == \app\components\BaseUtilites::settings('TEMP_LOG_FILENAME')){
+        if (!BaseUtilites::settings('TEMP_LOG_ENABLE') && $filename == BaseUtilites::settings('TEMP_LOG_FILENAME')){
             return true;
         }
 		
@@ -87,7 +87,7 @@ class Log
      * @param $obj
      */
     static public function printR($obj){
-        if(\app\components\BaseUtilites::settings('PRODUCTION_MODE')){
+        if(BaseUtilites::settings('PRODUCTION_MODE')){
             return;
         }
         echo "<pre>";
