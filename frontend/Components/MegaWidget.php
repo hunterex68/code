@@ -4,8 +4,8 @@ namespace app\components;
 use yii\base\Widget;
 use SoapClient;
 use SoapFault;
-use app\models\Customer;
-use frontend\models\Usersmetadata;
+use common\models\Customer;
+use common\models\Usersmetadata;
 
 
 

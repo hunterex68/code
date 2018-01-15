@@ -6,7 +6,7 @@
     background-color:#999;
 }
 .wrap {
-    min-height: calc(100% - 205px);
+    min-height: calc(100% - 180px);
     height: auto;
     /*margin: 0 0 -205px;*/
     /*padding: 0 0 60px;*/

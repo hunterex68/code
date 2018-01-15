@@ -2,16 +2,31 @@
 
 namespace frontend\controllers;
 
-use app\models\Log;
+use common\models\Log;
 use yii;
-use frontend\models\Oper;
+use common\models\Oper;
+use yii\data\ArrayDataProvider;
 
 class BasketController extends \yii\web\Controller
 {
 
+    public $layout = 'priceLayout';
+
     public function actionIndex()
     {
-        return $this->render('index');
+        $this->view->registerCssFile('/css/shortPage.css');
+
+        $opers = Oper::find()
+            ->select(['id','ordid','make','code','Name','region','quan','price','currency','koeff','container','minquan','pack'])
+            ->where(['userid'=>Yii::$app->user->id])
+            ->andWhere('ordid is null')
+            ->asArray()->all();
+        $operProvider = new ArrayDataProvider([
+
+            'allModels' => $opers,
+
+        ]);
+        return $this->render('index',['basket'=>$operProvider]);
     }
     public function actionBasketWindow()
     {

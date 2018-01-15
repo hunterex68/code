@@ -1,39 +1,22 @@
 <?
 namespace app\components;
 
-
 use yii\base\Widget;
-use app\models\Stock;
-use frontend\models\Usersmetadata;
-
-
-
+use common\models\Stock;
+use common\models\Usersmetadata;
 
 class StockWidget extends Widget
 {
     public $number;
     public $brand;
     public $buf;
-
     public $data;
-
-
-    function __construct()
-    {
-    }
-
-    public function init()
-    {
-
-    }
 
     public function run()
     {
 
         $this->getPrice();
-
         $id = \Yii::$app->user->id;
-        //  print_r($this->data);die;
         if($id>0)
             return $this->render('StockPrice',['data'=>$this->data]);
         else

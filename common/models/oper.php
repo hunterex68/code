@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\models;
+namespace common\models;
 
 use Yii;
 
@@ -51,7 +51,7 @@ class oper extends \yii\db\ActiveRecord
     {
         return [
             [['ordid', 'supplierid', 'weightGr', 'dpc', 'stock', 'minquan','userid'], 'integer'],
-            [['make', 'code', 'Name', 'region', 'updated_at', 'stock','userid'], 'required'],
+            [['make', 'code', 'name', 'region', 'updated_at', 'stock','userid'], 'required'],
             [['quan', 'price', 'koeff', 'supplierquan', 'supplierprice'], 'number'],
             [['updated_at'], 'safe'],
             [['make'], 'string', 'max' => 100],
@@ -72,29 +72,29 @@ class oper extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'ordid' => 'Ordid',
-            'make' => 'Make',
-            'code' => 'Code',
-            'Name' => 'Name',
-            'region' => 'Region',
-            'quan' => 'Quan',
-            'price' => 'Price',
-            'currency' => 'Currency',
-            'koeff' => 'Koeff',
+            'ordid' => '№ заказа',
+            'make' => 'Производитель',
+            'code' => 'Код',
+            'Name' => 'Описание',
+            'region' => 'Регион',
+            'quan' => 'Кол-во',
+            'price' => 'Цена',
+            'currency' => 'Валюта',
+            'koeff' => 'Коефф.',
             'supplierid' => 'Supplierid',
-            'supplierquan' => 'Supplierquan',
-            'supplierprice' => 'Supplierprice',
-            'weightGr' => 'Weight Gr',
-            'subst' => 'Subst',
-            'agry' => 'Agry',
-            'brand' => 'Brand',
-            'wait' => 'Wait',
-            'container' => 'Container',
-            'dpc' => 'Dpc',
-            'updated_at' => 'Updated At',
-            'stock' => 'Stock',
-            'minquan' => 'Minquan',
-            'pack' => 'Pack',
+            'supplierquan' => 'Кол-во закупл',
+            'supplierprice' => 'Цена закупки',
+            'weightGr' => 'Вес, гр.',
+            'subst' => 'Замена',
+            'agry' => 'Согласен с превышением',
+            'brand' => 'Только этот бренд',
+            'wait' => 'Согласен на закупку более 1 мес.',
+            'container' => 'Контейнер',
+            'dpc' => 'ДПЦ',
+            'updated_at' => 'Обновлено',
+            'stock' => 'Склад',
+            'minquan' => 'Мин. к-во',
+            'pack' => 'Упаковка',
             'userid' => 'Клиент'
         ];
     }
@@ -105,5 +105,13 @@ class oper extends \yii\db\ActiveRecord
     public function getOrd()
     {
         return $this->hasOne(Orders::className(), ['id' => 'ordid']);
+    }
+
+    public static function getCount()
+    {
+        $pos = Oper::find()
+            ->where(['userid'=>\Yii::$app->user->id,'ordid'=>null])
+            ->count();
+        return $pos;
     }
 }

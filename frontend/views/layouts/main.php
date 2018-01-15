@@ -1,8 +1,8 @@
 ﻿<?
-use app\assets\AppAsset;
+use frontend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\components\searchFormWidget;
+use frontend\components\searchFormWidget;
 AppAsset::register($this);
 //\yii\web\JqueryAsset::register($this);
 $this->beginPage() ?>

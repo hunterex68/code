@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-use frontend\models\Usersgroups;
+use common\models\Usersgroups;
 
 /**
  * This is the model class for table "usersmetadata".

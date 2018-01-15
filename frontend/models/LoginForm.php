@@ -9,6 +9,7 @@ namespace frontend\models;
 
 use yii\base\Model;
 use Yii;
+use common\models\user;
 
 class LoginForm extends Model
 {

@@ -22,11 +22,8 @@ use yii\grid\GridView;
                     'emptyText' => '<table><tbody></tbody></table>',
                     'columns' => [
 
-                        // Обычные поля определенные данными содержащимися в $dataProvider.
-                        // Будут использованы данные из полей модели.
                         'id',
                         'rid',
-
 
                         [
                             'label' => Yii::t('app', 'Имя'),

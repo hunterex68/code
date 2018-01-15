@@ -1,8 +1,10 @@
 <?
-use app\assets\AppAsset;
+use frontend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\components\searchFormWidget;
+use frontend\components\searchFormWidget;
+use common\models\oper;
+
 AppAsset::register($this);
 
 $this->beginPage() ?>
@@ -13,7 +15,7 @@ $this->beginPage() ?>
 	<meta charset="<?= Yii::$app->charset ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Сайт автозапчастей"/>
-	<link rel="icon" href="/favicon.png"/>
+	<link rel="icon" href=<?php echo Url::toRoute("favicon.png");?> />
 	<?= Html::csrfMetaTags() ?>
 	<title><?= Html::encode($this->title) ?></title>
 	<?php $this->head() ?>
@@ -26,15 +28,22 @@ $this->beginPage() ?>
 
 		<div class="row">
 
-			<div class="col-md-4 top_links">
+			<div class="col-md-4 col-md-offset-1 top_links">
 				<button class="client-icon hidden-md hidden-lg hidden-sm">
 					<i class="glyphicon glyphicon-user"></i>
 				</button>
-				<button href="basket" class="basket">
+				<a href="<?php echo Url::toRoute('/basket')?>" class="basket">
 					<i class="glyphicon glyphicon-shopping-cart"></i>
-				</button>
-				<div class="basket-counter"><span id="counter">0</span></div>
+				</a>
+                <div class="basket-counter">
+                    <span id="counter">
+                        <?php
 
+                            echo Oper::getCount();
+
+                        ?>
+                    </span>
+                </div>
 			</div>
 
 			<div class="col-md-3 soc_buttons">
@@ -117,7 +126,8 @@ $this->beginPage() ?>
 		</div>
 	</div>
 </header>
-<div class="container-fluid">
+<div class="container-fluid wrap">
+
 	<?php echo  searchFormWidget::widget([
 		'header1'=>'Все, что Вам нужно находится здесь!',
 		'header2'=>'любые запчасти на автомобиль.',
@@ -129,6 +139,8 @@ $this->beginPage() ?>
 		echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
 	}
 	?>
+    </div>
+<div class="container-fluid">
 		<div class="row" style="background-color:#999">
 			<div class="col-md-4" style=" color: #FFF;">
 

@@ -17,7 +17,11 @@ use yii\bootstrap\Tabs;
                 [
                     'label'     => 'Заказы',
                     'content'   =>  $this->render('tabs/orders', ['orders' => $orders])
-                ]
+                ],
+                [
+                    'label'     => 'Корзина',
+                    'content'   =>  $this->render('tabs/basket', ['basket' => $basket])
+                ],
             ]
         ]);
 
