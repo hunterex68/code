@@ -105,7 +105,7 @@ $(document).on('click','.js-add2basket',function(){
 
 });
 
-$(document).on('change','#offer',function() {
+$(document).on('change','#offer,#tel,#name',function() {
 
     var flag = true;
     var form = $('#addform');
@@ -114,7 +114,7 @@ $(document).on('change','#offer',function() {
     if(name && tel)
       if(($(name).val()).length==0 || ($(tel).val()).length==0)
         flag = false;
-    if($(this).is(':checked') && flag) {
+    if($('#offer').is(':checked') && flag) {
         $('.js-add2basket').removeAttr('disabled');
     }
     else

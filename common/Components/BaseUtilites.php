@@ -693,7 +693,6 @@ class BaseUtilites {
         return $months;
     }
 
-
     /**
      * @param $string
      * @return bool
@@ -702,7 +701,6 @@ class BaseUtilites {
         json_decode($string);
         return (json_last_error() == JSON_ERROR_NONE);
     }
-
 
     /**
      * return null if not set
@@ -720,7 +718,6 @@ class BaseUtilites {
         return $result;
     }
 
-
     /**
      * @return bool
      */
@@ -728,34 +725,11 @@ class BaseUtilites {
         return Yii::$app->user->identity->AccessLevel === 1;
     }
 
-
-    /**
-     * @return bool
-     */
-    public static function isCountryAdmin() {
-        return Yii::$app->user->identity->AccessLevel === 2;
-    }
-
-    /**
-     * @return bool
-     */
-    public static function isOfficeAdmin() {
-        return Yii::$app->user->identity->AccessLevel === 3;
-    }
-
-
     /**
      * @return bool
      */
     public static function isUser() {
         return Yii::$app->user->identity->AccessLevel === 5;
-    }
-
-    /**
-     * @return bool
-     */
-    public static function isPfuUser() {
-        return Yii::$app->user->identity->AccessLevel === 4;
     }
 
     public static function setLanguage($language_code) {
@@ -766,4 +740,29 @@ class BaseUtilites {
 		Yii::$app->session->set('language_code', $language_code);
     	Yii::$app->language = $language_code;
 	}
+
+	public static function getCookies()
+    {
+        $cookies = Yii::$app->request->cookies;
+        if ($cookies->has('hash')) {
+            $hash = $cookies->getValue('hash', '');
+        } else {
+            $hash = Yii::$app->security->generateRandomString();
+            $cookies->add(new \yii\web\Cookie([
+                'name' => 'hash',
+                'value' => $hash,
+                'expire' => time() +  60*60*24,
+            ]));
+        }
+        return $hash;
+    }
+
+    public static function setCookies($event)
+    {
+        $cookies = Yii::$app->request->cookies;
+        $cookies->add(new \yii\web\Cookie([
+            'name' => $event->name,
+            'value' => $event->value,
+        ]));
+    }
 }

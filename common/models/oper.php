@@ -50,13 +50,14 @@ class oper extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+
             [['ordid', 'supplierid', 'weightGr', 'dpc', 'stock', 'minquan','userid'], 'integer'],
             [['make', 'code', 'name', 'region', 'updated_at', 'stock','userid'], 'required'],
             [['quan', 'price', 'koeff', 'supplierquan', 'supplierprice'], 'number'],
             [['updated_at'], 'safe'],
             [['make'], 'string', 'max' => 100],
             [['code', 'region', 'pack'], 'string', 'max' => 64],
-            [['Name'], 'string', 'max' => 255],
+            [['name','hash'], 'string', 'max' => 255],
             [['currency'], 'string', 'max' => 3],
             [['subst'], 'string', 'max' => 300],
             [['agry', 'brand', 'wait', 'container'], 'boolean'],
@@ -75,7 +76,7 @@ class oper extends \yii\db\ActiveRecord
             'ordid' => '№ заказа',
             'make' => 'Производитель',
             'code' => 'Код',
-            'Name' => 'Описание',
+            'name' => 'Описание',
             'region' => 'Регион',
             'quan' => 'Кол-во',
             'price' => 'Цена',

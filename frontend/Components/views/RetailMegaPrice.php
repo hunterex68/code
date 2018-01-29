@@ -70,7 +70,7 @@ if(count($data['uae']['orig'])>0)
 
                                 <td id='percent'  style="text-align: left;padding-left:3vw;" class="hidden-xs"><? echo $val['percent']; ?></td>
                                 <td>
-                                    <?php echo Html::button('<span class="glyphicon glyphicon-shopping-cart"></span>', ["class" => "btn btn-success basket",'data-url'=>Url::toRoute('basket/basket-window'), 'data-info'=> base64_encode(json_encode($val))]); ?>
+                                    <?php echo Html::button('<span class="glyphicon glyphicon-shopping-cart"></span>', ["class" => "btn btn-success basket btn-xs",'data-url'=>Url::toRoute('basket/basket-window'), 'data-info'=> base64_encode(json_encode($val))]); ?>
                                 </td>
                             </tr>
                             <?
@@ -130,7 +130,7 @@ if(count($data['uae']['analog'])>0)
 
                     <td id='percent' style="text-align: left; padding-left: 3vw" class="hidden-xs"><? echo $val['percent']; ?></td>
                     <td>
-                        <?php echo Html::button('<span class="glyphicon glyphicon-shopping-cart"></span>', ["class" => "btn btn-success basket",'data-url'=>Url::toRoute('basket/basket-window'),'data-info'=>base64_encode(json_encode($val))]); ?>
+                        <?php echo Html::button('<span class="glyphicon glyphicon-shopping-cart"></span>', ["class" => "btn btn-success btn-xs basket",'data-url'=>Url::toRoute('basket/basket-window'),'data-info'=>base64_encode(json_encode($val))]); ?>
                     </td>
                 </tr>
                 <?

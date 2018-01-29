@@ -6,10 +6,10 @@ use yii\base\Exception;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use backend\models\SignupForm;
-use backend\models\LoginForm;
-use backend\models\Log;
-use backend\models\User;
+use common\models\SignupForm;
+use common\models\LoginForm;
+use common\models\Log;
+use common\models\User;
 
 /**
  * Site controller

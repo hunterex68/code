@@ -19,12 +19,17 @@ return [
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
             'on afterlogin'=>function($event){
-                \app\models\User::updateLastLogin($event);
-                \app\models\User::setCookies($event);
+                common\models\User::updateLastLogin($event);
+                common\components\BaseUtilites::setCookies($event);
                 //$user = $event->sender->identity;
                 //$user->updateAttributes(['logged_at'=>time()]);
                 //SsetCoockies($user);
             }
+        ],
+        'request' => [
+            'cookieValidationKey' => 'partcom',
+            'enableCookieValidation' => true,
+            'enableCsrfValidation' => true,
         ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend

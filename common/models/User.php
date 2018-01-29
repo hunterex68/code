@@ -64,7 +64,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'id' => 'ID',
             'username' => 'Ник',
             'email' => 'Email',
-            'password' => 'Password Hash',
+            'password' => 'Пароль',
             'status' => 'Статус',
             'auth_key' => 'Auth Key',
             'created_at' => 'Дата создания',
@@ -198,5 +198,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->auth_key === $authKey;
     }
 
+    public static function updateLastLogin($event)
+    {
+
+    }
 
 }

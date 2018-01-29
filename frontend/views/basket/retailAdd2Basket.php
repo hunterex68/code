@@ -14,23 +14,7 @@ $data = json_decode(base64_decode($model));
     <form id='addform'>
 <?php
 
-if(Yii::$app->user->id == 0)
-{
-    ?>
 
-        <div class="row">
-            <div class="col-md-6">
-
-                <input type="text" name="name" id="name" class="form-control" placeholder="<?php echo Yii::t('app','Имя')?>">
-            </div>
-            <div class="col-md-6">
-
-                <input type="text" name="tel" id="tel" class="form-control" placeholder="<?php echo Yii::t('app','Телефон')?>">
-            </div>
-        </div>
-
-    <?php
-}
 ?>
     <hr>
     <div class="row">

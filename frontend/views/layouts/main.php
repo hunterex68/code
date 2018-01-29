@@ -81,7 +81,9 @@ $this->beginPage() ?>
 							<li>
 								<?= Html::a(Yii::t('app',"Контакты"),Url::toRoute('contacts'),["class"=>"nav-link"]); ?>
 							</li>
-
+                            <li class="active">
+                                <?= Html::a(Yii::t('app',"Регистрация"),Url::toRoute('signup'),["class"=>"nav-link"]); ?>
+                            </li>
 							<li id="enter">
 
 								<?

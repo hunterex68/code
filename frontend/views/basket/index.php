@@ -10,8 +10,28 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use common\components\ExtActionColumn;
 
+if(Yii::$app->user->id == 0)
+{
+    ?>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <input type="text" name="name" id="name" class="form-control" placeholder="<?php echo Yii::t('app','Имя')?>">
+        </div>
+        <div class="col-md-6">
+
+            <input type="text" name="tel" id="tel" class="form-control" placeholder="<?php echo Yii::t('app','Телефон')?>">
+        </div>
+    </div>
+
+    <?php
+}
 
 ?>
+
+
+
 <div class="row">
     <div class="col-md-12" style="background-color:white">
 
@@ -34,12 +54,15 @@ use common\components\ExtActionColumn;
 <div class="row">
     <div class="col-md-12" style="background-color:white">
         <div class="home">
-
+            <?php \yii\widgets\Pjax::begin(['id'=>'p-basket']); ?>
             <?php
 
             echo Gridview::widget([
 
                 'dataProvider' => $basket,
+                'tableOptions' => [
+                    'class' => 'table table-striped table-hover'
+                ],
 
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
@@ -85,11 +108,11 @@ use common\components\ExtActionColumn;
                         'template' => '{edit} {delete}',
                         'buttons' => [
                             'edit' => function ($url) {
-                                return Html::a(Yii::t('app', 'Изменить'), $url, ['class' => 'btn btn-success btn-xs']);
+                                return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, ['class' => 'btn btn-success js-basket-edit']);
                             },
 
                             'delete' => function ($url) {
-                                return Html::a(Yii::t('app', 'Удалить'), $url, ['class' => 'btn btn-danger btn-xs']);
+                                return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, ['class' => 'btn btn-danger js-basket-delete']);
                             }
                         ]
                     ]
@@ -97,7 +120,7 @@ use common\components\ExtActionColumn;
             ]);
 
             ?>
-
+            <?php \yii\widgets\Pjax::end(); ?>
         </div>
     </div>
 </div>

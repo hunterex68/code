@@ -1,39 +1,42 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \frontend\models\SignupForm */
-
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-
-$this->title = 'Регистрация';
-$this->params['breadcrumbs'][] = 'Регистрация::Шаг 1';
 ?>
+<?php if(Yii::$app->session->hasFlash('error')):
 
-<div class="container" id="body">
+    ?>
 
-        <div class="row site-login">
-            <?= yii\widgets\Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
+    <div class="alert alert-warning">
+
+        <?php
+
+        Yii::$app->session->getFlash('error');
+
+        ?>
+
+    </div>
+
+    <?php
+endif;
+?>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1>
+            <?php
+            echo Yii::t('app','Форма регистрации');
+            ?>
+        </h1>
+    <?php
+    $form = ActiveForm::begin() ?>
+    <?= $form->field($model, 'username') ?>
+    <?= $form->field($model, 'password')->passwordInput() ?>
+    <?= $form->field($model, 'email') ?>
+        <div class="form-group">
+            <div>
+                <?= Html::submitButton('Регистрация', ['class' => 'btn btn-success']) ?>
+            </div>
         </div>
-        <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-5 col-sm-offset-1">
-            <h1><?= Html::encode($this->title) ?></h1>
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-                <?= $form->field($model, 'email') ?>
-
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Далее', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
+    <?php ActiveForm::end() ?>
     </div>
 </div>

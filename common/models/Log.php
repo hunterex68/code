@@ -48,15 +48,16 @@ class Log
      */
     private static function writeToFile($msg, $append = false, $filename = null){
         if(empty($filename)){
-            $filename = \app\components\BaseUtilites::settings('TEMP_LOG_FILENAME');
+            $filename = BaseUtilites::settings('TEMP_LOG_FILENAME');
         }
         if (!BaseUtilites::settings('TEMP_LOG_ENABLE') && $filename == BaseUtilites::settings('TEMP_LOG_FILENAME')){
             return true;
         }
-		
+
         $mode = ($append) ? "a+" : "w+";
         $dir = Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'logs';
         $file = Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . $filename;
+
         $ret =  false;
         if(is_dir($dir) && ((file_exists($file) && is_writable($file))
 				|| (!file_exists($file) && is_writable(Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR))) ){

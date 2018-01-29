@@ -47,7 +47,7 @@ if (count($data['uae']['orig']) > 0) {
                     <td class="hidden-xs">
                         <?php echo $val['weight']; ?>
                     </td>
-                    <td style="text-align: center"><? echo $val['region'] ?></td>
+                    <td style="text-align: center"><kbd><? echo $val['region'] ?></kbd></td>
                     <td style="text-align: left;padding-left:3vw;">
                         <? echo $val['delivery'] !== 0 ? $val['delivery'] : '<span class="glyphicon glyphicon-earphone"></span>'; ?>
                     </td>
@@ -55,7 +55,7 @@ if (count($data['uae']['orig']) > 0) {
 
                     <td id='quan' style="text-align: right;" class="hidden-xs"><? echo $val['quan']; ?></td>
                     <td>
-                        <?php echo Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>', "basketAdd", ["class" => "btn btn-success"]); ?>
+                        <?php echo Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>', "basketAdd", ["class" => "btn btn-success btn-xs"]); ?>
                     </td>
                 </tr>
                 <?
@@ -102,7 +102,7 @@ if (count($data['uae']['analog']) > 0) {
                         <td><? echo $val['code'] ?></td>
                         <td class="hidden-xs"><? echo $val['name'] ?></td>
                         <td class="hidden-xs"><? echo $val['weight'] ?></td>
-                        <td style="text-align: center"><? echo $val['region'] ?></td>
+                        <td style="text-align: center"><kbd class="js-region"><? echo $val['region'] ?></kbd></td>
                         <td style="text-align: left;padding-left:3vw;">
                             <? echo $val['delivery'] !== 0 ? $val['delivery'] : '<span class="glyphicon glyphicon-earphone"></span>'; ?>
                         </td>
@@ -110,7 +110,7 @@ if (count($data['uae']['analog']) > 0) {
 
                         <td id='quan' style="text-align: right;" class="hidden-xs"><? echo $val['quan']; ?></td>
                         <td>
-                            <?php echo Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>', "basketAdd", ["class" => "btn btn-success"]); ?>
+                            <?php echo Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>', "basketAdd", ["class" => "btn btn-success btn-xs"]); ?>
                         </td>
                     </tr>
                     <?
